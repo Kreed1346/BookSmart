@@ -1,3 +1,37 @@
+html {
+    background-color: #3D5946;
+}
+
 h1 {
-    color: #aa8855;
+    color: #FFD57F;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFDEB;
+}
+
+footer {
+    width: 500px;
+    background-color: #37734C;
+    font-size: 20px;
+    color: #FFFDEB;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+#welcome {
+    width: 500px;
+    background-color: #A17237;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    margin: 0px auto 20px auto;
+    
+}
+
+.custom-box-shadow {
+    box-shadow: 0px 5px 25px rgba(0,0,0,0.1);
 }
