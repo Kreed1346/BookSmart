@@ -4,6 +4,7 @@ html {
 
 h1 {
     color: #FFD57F;
+    font-family: 'Marcellus SC', serif;
 }
 
 a {
@@ -15,6 +16,7 @@ footer {
     width: 500px;
     background-color: #37734C;
     font-size: 20px;
+    font-family: 'Marcellus SC', serif;
     color: #FFFDEB;
     text-align: center;
     padding: 1px;
@@ -34,4 +36,54 @@ footer {
 
 .custom-box-shadow {
     box-shadow: 0px 5px 25px rgba(0,0,0,0.1);
+}
+
+.return {
+    font-family: 'Rosarivo', serif;
+}
+
+.login-link {
+    font-family: 'Rosarivo', serif;
+}
+
+label {
+    font-size: 20px;
+    font-family: 'Rosarivo', serif;
+    color: #A17237;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #FFFDEB;
+    background-color: #37734C;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
+}
+
+.submit-btn:hover {
+    background-color: #3D5946;
+    box-shadow: inset 0px 0px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.login-form {
+    width: 500px;
+    background-color: #A17237;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    margin: 0px auto 20px auto;
+}
+
+.login-form form {
+    width: 460px;
+    margin: 20px auto;
+    background-color: #FFD57F;
+    padding-top: 10px;
+    border-radius: 20px;
 }
