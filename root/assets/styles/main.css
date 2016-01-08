@@ -77,7 +77,7 @@ input {
     text-align: center;
     padding: 1px;
     border-radius: 20px;
-    margin: 0px auto 20px auto;
+    margin: 20px auto;
 }
 
 .login-form form {
