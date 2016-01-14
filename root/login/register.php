@@ -1,5 +1,5 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
-require($INC_DIR. "header.php");
+    require($INC_DIR. "header.php");
     session_start();
     if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
         Print '<script>window.location.assign("../profile/profile.php");</script>';
@@ -26,6 +26,7 @@ require($INC_DIR. "header.php");
 <?php 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         
+        //Open connection to db and stay connected until closed
         $link = mysqli_connect("localhost", "root", "booksmart", "booksmart");
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
@@ -37,8 +38,6 @@ require($INC_DIR. "header.php");
         $displayname = mysqli_real_escape_string($link, $_POST['displayname']); //sanitize displayname input
         $bool = true;
         
-//        mysqli_connect("localhost", "root", "") or die(mysql_error()); //Open connection
-//        mysqli_select_db("booksmart") or die("Cannot connect to database"); //Connect to db
         $query = mysqli_query($link, "SELECT * FROM users"); //query users table
         
         //Checks the database to see if a user with the same username is found
@@ -62,9 +61,12 @@ require($INC_DIR. "header.php");
             } else {
                 $_SESSION["displayname"] = $username;
             }
+            $_SESSION["username"] = $username;
             $_SESSION["isLoggedIn"] = true;
             session_write_close();
         }
+        
+        //Close db connection
         mysqli_close($link);
     }
 ?>

@@ -40,6 +40,7 @@
             } else {
                 $_SESSION["displayname"] = $username;
             }
+            $_SESSION["username"] = $username;
             $_SESSION["isLoggedIn"] = true;
             
             header("location: ../profile/profile.php");

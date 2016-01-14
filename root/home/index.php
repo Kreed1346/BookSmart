@@ -1,5 +1,6 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
-require($INC_DIR. "header.php"); ?>
+    require($INC_DIR. "header.php");
+?>
         <nav>
             <a class="login-link" href="../login/login.php"><h4>Login</h4></a>
             <a class="login-link" href="../login/register.php"><h4>Register</h4></a>  

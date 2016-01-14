@@ -52,6 +52,10 @@ label {
     color: #A17237;
 }
 
+.search-label {
+    color: #FFD57F;
+}
+
 input {
     margin-bottom: 10px;
 }
@@ -61,6 +65,7 @@ input {
     padding: 10px 20px;
     border-radius: 10px;
     color: #FFFDEB;
+    font-family: 'Rosarivo', serif;
     background-color: #37734C;
     box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
 }
@@ -86,4 +91,125 @@ input {
     background-color: #FFD57F;
     padding-top: 10px;
     border-radius: 20px;
+}
+
+.profile-header {
+    text-align: right;
+    background-color: #1D3926;
+    padding: 1px;
+    border-radius: 20px;
+}
+
+.profile-header h1 {
+    display: inline-block;
+}
+
+.profile-header a {
+    display: inline-block;
+    margin-left: 20px;
+    padding-right: 30px;
+}
+
+.resource-sidebar {
+    width: 400px;
+    background-color: #1D3926;
+    margin-top: 20px;
+    padding: 1px 20px;
+    border-radius: 20px;
+}
+
+.resource-sidebar hr {
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#37734C;
+    color:#37734C;
+    border: 0 none;
+}
+
+.resource-sidebar h2 {
+    font-family: 'Marcellus SC', serif;
+}
+
+.search-form {
+    width: 500px;
+    background-color: #A17237;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    margin: 20px auto;   
+}
+
+.search-form form {
+    margin-top: 20px;
+}
+
+#search-results {
+    width: 500px;
+    background-color: #A17237;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    margin: 0 auto 20px;
+}
+
+#search-results p {
+    color: #FFFDEB;
+    font-family: 'Marcellus SC', serif;
+}
+
+
+.search-result {
+    border-radius: 15px;
+    padding: 10px 5px;
+    margin: 0px 5px;
+    background-color: #A17237;
+}
+
+.search-result:last-child {
+    margin: 0px 5px 5px;
+}
+
+.search-result:hover {
+    background-color: #815217;
+}
+
+#course-info h2 {
+    color: #FFD57F;
+    font-family: 'Marcellus SC', serif;
+}
+
+#course-info ul {
+    list-style: none;
+}
+
+#course-info ul li {
+    color: #FFFDEB;
+    font-size: 20px;
+    font-family: 'Rosarivo', serif;
+}
+
+#profile-settings {
+    width: 500px;
+    background-color: #A17237;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+#profile-settings form {
+    margin-top: 20px;
+}
+
+#profile-settings form label {
+    color: #FFD57F;
+}
+
+.update-notif {
+    background-color: #37734C;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 5px;
 }
