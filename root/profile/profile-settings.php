@@ -5,8 +5,8 @@
         <nav class="profile-header">
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
-                echo '<h1>' . $_SESSION["displayname"] . '</h1>';
-                echo '<a href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
+                echo '<h1><a class="profile-name-link" href="profile.php">' . $_SESSION["displayname"] . '</a></h1>';
+                echo '<a class="logout" href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
             } else {
                 Print '<script>window.location.assign("../login/login.php");</script>';
             }
@@ -20,7 +20,7 @@
         ?>
         <section id="profile-settings">
             <h1>Profile Settings</h1>
-            <a class="return" href="../profile/profile.php">Return to Profile Page</a>
+            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
             <form action="change-settings.php" method="POST">
                 <label for="displayname">Display Name: </label>
                 <input type="text" name="displayname" placeholder="Choose a display name here." value="<?php echo $_SESSION['displayname']?>"/>

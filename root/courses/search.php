@@ -23,7 +23,7 @@
                         $string = $count . ($count . ($count > 1) ? " results" : " result") . " found.";
                         echo "<p>" . $string . "</p>";
                         foreach($_SESSION["SEARCH_RESULTS"] as $searchResult) {
-                            echo "<a href='course-info.php?courseID=$searchResult[0]&courseName=$searchResult[1]'><p class='search-result'>$searchResult[0] - $searchResult[1]</p></a>";
+                            echo "<a href='course-info.php?courseID=$searchResult[0]'><p class='search-result'>$searchResult[0] - $searchResult[1]</p></a>";
                         }
                     } else {
                         echo "<p>No courses found matching the search parameters.</p>";

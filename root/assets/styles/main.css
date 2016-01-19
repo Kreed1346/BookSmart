@@ -114,6 +114,7 @@ input {
     width: 400px;
     background-color: #1D3926;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 1px 20px;
     border-radius: 20px;
 }
@@ -129,6 +130,17 @@ input {
 
 .resource-sidebar h2 {
     font-family: 'Marcellus SC', serif;
+}
+
+.profile-name-link {
+    color: #FFD57F;
+    text-align: center;
+    margin-right: -20px;
+}
+
+.logout {
+    font-family: 'Rosarivo', serif;
+    font-size: 14px;
 }
 
 .search-form {
