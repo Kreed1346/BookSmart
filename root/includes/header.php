@@ -7,3 +7,10 @@
         <link href='https://fonts.googleapis.com/css?family=Rosarivo:400,400italic' rel='stylesheet' type='text/css'>
     </head>
     <body>
+<?php
+    $DEP_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/dependencies";
+    require($DEP_DIR . "/vendor/autoload.php");
+    if (!defined("PP_CONFIG_PATH")) {
+        define("PP_CONFIG_PATH", $DEP_DIR . "/vendor/paypal/rest-api-sdk-php/lib");
+    }    
+?>

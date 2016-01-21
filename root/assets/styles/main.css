@@ -1,5 +1,6 @@
 html {
     background-color: #3D5946;
+    min-width: 735px;
 }
 
 h1 {
@@ -40,6 +41,13 @@ footer {
 
 .return {
     font-family: 'Rosarivo', serif;
+}
+
+nav .return {
+    position: relative;
+    top: 22px;
+    left: 10px;
+    float: left;
 }
 
 .login-link {
@@ -224,4 +232,66 @@ input {
     width: 500px;
     margin: 0 auto;
     border-radius: 5px;
+}
+
+.top-margin {
+    margin-top: 40px;
+}
+
+.less-bottom-margin {
+    margin-bottom: -5px;
+}
+
+.cc-content {
+    text-align: center;
+    background-color: #1D3926;
+    width: 460px;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+.cc-content h2 {
+    font-family: 'Marcellus SC', serif;
+}
+
+.cc-content form label {
+    color: #FFD57F;
+}
+
+.cc-content form section {
+    margin-top: 5px;
+}
+
+.cc-content form section label input {
+    display: none;
+}
+
+.cc-content form section label input + img {
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.cc-content form section label input:checked + img {
+    opacity: 1;
+}
+
+.cc-content form section label img {
+    width: 100px;
+    border-radius: 9px;
+    opacity: 0.5;
+}
+
+.cc-content form section label img:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.cc-content form .credit-card {
+    width: 150px;
+    text-align: center;
+}
+
+.cc-content form .cvv {
+    width: 30px;
+    text-align: center;
 }

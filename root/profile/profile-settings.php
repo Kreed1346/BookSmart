@@ -3,6 +3,7 @@
     session_start();
 ?>
         <nav class="profile-header">
+            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
                 echo '<h1><a class="profile-name-link" href="profile.php">' . $_SESSION["displayname"] . '</a></h1>';
@@ -20,7 +21,6 @@
         ?>
         <section id="profile-settings">
             <h1>Profile Settings</h1>
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
             <form action="change-settings.php" method="POST">
                 <label for="displayname">Display Name: </label>
                 <input type="text" name="displayname" placeholder="Choose a display name here." value="<?php echo $_SESSION['displayname']?>"/>
