@@ -132,13 +132,15 @@
                     foreach($_SESSION["TEXTBOOKS"] as $textbook) {
                         if (!empty($textbook) && $textbook != null) {
                             $isbn_used = "";//(!empty($textbook['ISBN_v10'])) ? substr($textbook['ISBN_v10'], 8) : substr($textbook['ISBN_v13'], 11);
+                            $linkId = "";
                             if (!empty($textbook['ISBN_v10'])) {
                                 $isbn_used = substr($textbook['ISBN_v10'], 8);
-                                echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4" target="blank">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a></li>';
+                                $linkId = "CT2AYIAC6JDFTZV4";
                             } else {
                                 $isbn_used = substr($textbook['ISBN_v13'], 11);
-                                echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=7QXKSLMMEAKCSN65" target="blank">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a></li>'; 
+                                $linkId = "7QXKSLMMEAKCSN65";
                             }
+                            echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=' . $linkId . '" target="blank">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a></li>'; 
 //                            $isbn_used = substr($isbn_used, 8);
 //                            echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a></li>';
 //                            echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/1118531647/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1118531647&linkCode=as2&tag=book0920-20&linkId=7QXKSLMMEAKCSN65">JavaScript and JQuery: Interactive Front-End Web Development</a></li>';
