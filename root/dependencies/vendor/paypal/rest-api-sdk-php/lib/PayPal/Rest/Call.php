@@ -36,7 +36,7 @@ class Call {
 		if($credential == NULL || ! ($credential instanceof OAuthTokenCredential) ) {
 			throw new \PPInvalidCredentialException("Invalid credentials passed");	
 		}	
-			
+        
 		$resourceUrl = rtrim( trim($configMgr->get('service.EndPoint')), '/') . $path;
 		$config = new \PPHttpConfig($resourceUrl, $method);
 		$headers += array(

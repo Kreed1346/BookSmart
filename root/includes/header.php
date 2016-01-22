@@ -9,8 +9,5 @@
     <body>
 <?php
     $DEP_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/dependencies";
-    require($DEP_DIR . "/vendor/autoload.php");
-    if (!defined("PP_CONFIG_PATH")) {
-        define("PP_CONFIG_PATH", $DEP_DIR . "/vendor/paypal/rest-api-sdk-php/lib");
-    }    
+    require($DEP_DIR . "/vendor/autoload.php");   
 ?>

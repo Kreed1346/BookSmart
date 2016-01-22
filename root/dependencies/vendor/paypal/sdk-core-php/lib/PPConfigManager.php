@@ -17,8 +17,11 @@ class PPConfigManager {
 		if(defined('PP_CONFIG_PATH')) {
 			$configFile = constant('PP_CONFIG_PATH') . '/sdk_config.ini';
 		} else {		
+            //ABSOLUTELY SCREW THIS CODE
 			$configFile = implode(DIRECTORY_SEPARATOR,
 				array(dirname(__FILE__), "..", "config", "sdk_config.ini"));
+            //THIS SHOULD WORK INSTEAD
+//            $configFile = $_SERVER["DOCUMENT_ROOT"]."/BookSmart/root/dependencies/vendor/paypal/rest-api-sdk-php/lib/sdk_config.ini";
 		}
 		$this->load($configFile);
 	}

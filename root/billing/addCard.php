@@ -3,7 +3,7 @@
     session_start();
 ?>
         <nav class="profile-header">
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
+            <a class="return" href="billing-information.php">&#10094; Return to Billing Information Page</a>
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
                 echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
@@ -59,7 +59,7 @@
                 "EGMD_Y19KOKXTabyKlHwU1JnNNzUdD8qK_Gv3r1hvHhP33w1CXWkRoukGgViQB9iBHKu0LB6VQL37YUF"
             );
             
-            $apiContext = new \PayPal\Rest\ApiContext($cred, 'Request' . time());
+            $apiContext = new \PayPal\Rest\ApiContext($cred, 'Request ' . time());
             
             $link = mysqli_connect("localhost", "root", "booksmart", "booksmart");
             if (mysqli_connect_errno()) {
@@ -89,7 +89,7 @@
             $creditcard->setLast_name($lastname);
             
             try {
-                $creditcard->create(); //error happens here
+                $creditcard->create($apiContext); //error happens here
 //                echo $creditcard;
                 $_SESSION['CARD_CREATED'] = true; //allows for dynamic display of 
                 header('Location: billing-information.php');

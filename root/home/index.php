@@ -1,6 +1,11 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
     require($INC_DIR. "header.php");
 ?>
+<?php
+    if (!defined("PP_CONFIG_PATH")) {
+        define("PP_CONFIG_PATH", $_SERVER["DOCUMENT_ROOT"]."/BookSmart/root/dependencies/vendor/paypal/rest-api-sdk-php/lib");
+    } 
+?>
         <nav>
             <a class="login-link" href="../login/login.php"><h4>Login</h4></a>
             <a class="login-link" href="../login/register.php"><h4>Register</h4></a>  
