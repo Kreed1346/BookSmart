@@ -39,7 +39,7 @@
                 mysqli_real_query($link, "UPDATE users SET password='$hashPass' WHERE username='$user_check'");
                 $_SESSION['UPDATED'] = true;
             }
-            header("Location: profile-settings.php");
+            header("Location: profileSettings.php");
         }
         mysqli_close($link);
     }

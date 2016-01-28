@@ -21,7 +21,7 @@
         ?>
         <section id="profile-settings">
             <h1>Profile Settings</h1>
-            <form action="change-settings.php" method="POST">
+            <form action="changeSettings.php" method="POST">
                 <label for="displayname">Display Name: </label>
                 <input type="text" name="displayname" placeholder="Choose a display name here." value="<?php echo $_SESSION['displayname']?>"/>
                 <br/>

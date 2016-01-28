@@ -1,7 +1,7 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
     require_once($INC_DIR . "header.php");
     require_once("course.php");
-    require_once("book-lookup.php");
+    require_once("bookLookup.php");
     session_start();
 ?>
 <?php
@@ -157,8 +157,8 @@
                             echo '<img src="'.$thumbnail_url.'"/>';
                             
                             echo '<aside><p><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4" target="blank">' . $textbook['Text_Name'] . '</a></p>'; //return link to amazon product page
-                            echo '<p> Author: ' . $textbook['Primary_Author'] . '</p>';
-                            echo '<p>'.$price_tag.'</p></aside>';
+                            echo '<p> Author: ' . $textbook['Primary_Author'] . '</p>'; //book author
+                            echo '<p>'.$price_tag.'</p></aside>'; //book price (if available)
                             
                             echo '</li>';
                             

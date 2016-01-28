@@ -7,7 +7,7 @@
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
                 echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
-                echo '<a class="logout" href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
+                echo '<a class="logout" href="../profile/logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
             } else {
                 Print '<script>window.location.assign("../login/login.php");</script>';
             }
@@ -34,7 +34,7 @@
                         $string = $count . ($count . ($count > 1) ? " results" : " result") . " found.";
                         echo "<p>" . $string . "</p>";
                         foreach($_SESSION["SEARCH_RESULTS"] as $searchResult) {
-                            echo "<a href='course-info.php?courseID=$searchResult[0]'><p class='search-result'>$searchResult[0] - $searchResult[1]</p></a>";
+                            echo "<a href='courseInfo.php?courseID=$searchResult[0]'><p class='search-result'>$searchResult[0] - $searchResult[1]</p></a>";
                         }
                     } else {
                         echo "<p>No courses found matching the search parameters.</p>";

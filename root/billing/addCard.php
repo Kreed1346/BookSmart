@@ -3,7 +3,7 @@
     session_start();
 ?>
         <nav class="profile-header">
-            <a class="return" href="billing-information.php">&#10094; Return to Billing Information Page</a>
+            <a class="return" href="billingInformation.php">&#10094; Return to Billing Information Page</a>
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
                 echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
