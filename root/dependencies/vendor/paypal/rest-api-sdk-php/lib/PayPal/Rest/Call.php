@@ -37,7 +37,19 @@ class Call {
 			throw new \PPInvalidCredentialException("Invalid credentials passed");	
 		}	
         
-		$resourceUrl = rtrim( trim($configMgr->get('service.EndPoint')), '/') . $path;
+        $resourceUrl = $configMgr->get('service.Endpoint');
+        if (is_array($resourceUrl)) {
+            $resourceUrl = null;
+            $resourceUrl = "";
+            $resourceUrl = "https://api.sandbox.paypal.com";
+        }
+        
+        //OLD
+//		$resourceUrl = rtrim( trim($configMgr->get('service.EndPoint')), '/') . $path;
+        
+        //NEW
+        $resourceUrl = rtrim( trim($resourceUrl), '/') . $path;
+        
 		$config = new \PPHttpConfig($resourceUrl, $method);
 		$headers += array(
 			'Content-Type' => 'application/json',

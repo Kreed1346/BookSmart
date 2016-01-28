@@ -9,7 +9,7 @@
                 echo '<h1><a class="profile-name-link" href="profile.php">' . $_SESSION["displayname"] . '</a></h1>';
                 echo '<a class="logout" href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
             } else {
-                Print '<script>window.location.assign("../login/login.php");</script>';
+                header("../login/login.php");
             }
         ?>
         </nav>

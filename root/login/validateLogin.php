@@ -1,7 +1,6 @@
 <?php 
     session_start();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
         $link = mysqli_connect("localhost", "root", "booksmart", "booksmart");
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
@@ -17,7 +16,7 @@
         $query = mysqli_query($link, "SELECT * FROM users WHERE username = '$username'"); //query users table
         $exists = mysqli_num_rows($query);
         $user_name = "";
-        $user_pass = "";
+        $user_pass = '';
         $user_displayname = "";
         if ($exists > 0 && $exists == 1) {
             
@@ -27,9 +26,12 @@
                 $user_displayname = $row['displayname'];
             }
             
-            if(($username == $user_name) && ($password == $user_pass)) {
-                $accurateLoginInfo = true;
-            } 
+            if($username == $user_name) {
+                if (password_verify($password, $user_pass)) {
+                    $accurateLoginInfo = true;
+                }
+                Print '<script>window.alert("Password Verification is failing")</script>';
+            }
         }
         
         //if the user's username and password are found in the db and found to be accurate, log them in
@@ -43,9 +45,9 @@
             $_SESSION["username"] = $username;
             $_SESSION["isLoggedIn"] = true;
             
-            header("location: ../profile/profile.php");
+            header("Location: ../profile/profile.php");
         } else {
-            Print '<script>window.location.assign("login.php");</script>';
+            header("Location: login.php");
         }
         mysqli_close($link);
     }

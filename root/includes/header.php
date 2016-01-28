@@ -9,5 +9,5 @@
     <body>
 <?php
     $DEP_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/dependencies";
-    require($DEP_DIR . "/vendor/autoload.php");   
+    require($DEP_DIR . "/vendor/autoload.php");
 ?>

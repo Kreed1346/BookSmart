@@ -9,5 +9,6 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'PayPal\\' => array($vendorDir . '/paypal/sdk-core-php/lib'),
     'PayPal' => array($vendorDir . '/paypal/rest-api-sdk-php/lib'),
+    'PHPassLib' => array($vendorDir . '/rych/phpass/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
 );

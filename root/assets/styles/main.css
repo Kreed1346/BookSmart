@@ -295,3 +295,8 @@ input {
     width: 30px;
     text-align: center;
 }
+
+.error-catch {
+    background-color: #1D3926;
+    color: #FFD57F;
+}

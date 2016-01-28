@@ -30,10 +30,16 @@
             }
                              
             if (!empty($newPass) && !empty($confirmPass) && $newPass == $confirmPass) { // SALT/HASH password at a later date
-                mysqli_real_query($link, "UPDATE users SET password='$confirmPass' WHERE username='$user_check'");
+//                $options = [
+//                    'cost' => 11,
+//                    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+//                ];
+
+                $hashPass = password_hash($confirmPass, PASSWORD_BCRYPT);//, $options); is this breaking it?
+                mysqli_real_query($link, "UPDATE users SET password='$hashPass' WHERE username='$user_check'");
                 $_SESSION['UPDATED'] = true;
             }
-            Print '<script>window.location.assign("profile-settings.php");</script>';
+            header("Location: profile-settings.php");
         }
         mysqli_close($link);
     }

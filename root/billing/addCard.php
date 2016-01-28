@@ -68,14 +68,11 @@
             }
             
             $cardtype = mysqli_real_escape_string($link, $_POST['cardtype']);
-            
             $cardnumber = mysqli_real_escape_string($link, $_POST['cardnumber']);
             $cvv = mysqli_real_escape_string($link, $_POST['cvv']);
-            
             $monthValueParts = explode('-', mysqli_real_escape_string($link, $_POST['expirationmonth']));
             $expiryYear = $monthValueParts[0];
             $expiryMonth = $monthValueParts[1];
-
             $firstname = mysqli_real_escape_string($link, $_POST['firstname']);
             $lastname = mysqli_real_escape_string($link, $_POST['lastname']);
 
@@ -88,13 +85,15 @@
             $creditcard->setFirst_name($firstname);
             $creditcard->setLast_name($lastname);
             
+            
             try {
                 $creditcard->create($apiContext); //error happens here
 //                echo $creditcard;
-                $_SESSION['CARD_CREATED'] = true; //allows for dynamic display of 
+                $_SESSION['CARD_CREATED'] = true; //allows for dynamic display of card creation later
                 header('Location: billing-information.php');
             } catch (\PPConnectionException $ex) {
-                echo $ex;
+                echo '<p class="error-catch">Exception thrown!</p>';
+                echo '<p class="error-catch">'.$ex.'</p>';
             } finally {
                 mysqli_close($link);
             }

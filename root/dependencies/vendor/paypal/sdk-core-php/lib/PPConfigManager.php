@@ -17,12 +17,15 @@ class PPConfigManager {
 		if(defined('PP_CONFIG_PATH')) {
 			$configFile = constant('PP_CONFIG_PATH') . '/sdk_config.ini';
 		} else {		
-            //ABSOLUTELY SCREW THIS CODE
-			$configFile = implode(DIRECTORY_SEPARATOR,
-				array(dirname(__FILE__), "..", "config", "sdk_config.ini"));
-            //THIS SHOULD WORK INSTEAD
-//            $configFile = $_SERVER["DOCUMENT_ROOT"]."/BookSmart/root/dependencies/vendor/paypal/rest-api-sdk-php/lib/sdk_config.ini";
+            //ABSOLUTELY SCREW THIS CODE for not deliberately saying that I should have a config directory, one directory level up
+			$configFile = "../config/sdk_config.ini";//implode(DIRECTORY_SEPARATOR, array(dirname(__FILE__), "..", "config", "sdk_config.ini"));
 		}
+
+//        if (file_exists($configFile)) {
+//            $this->load($configFile);
+//        }
+
+        
 		$this->load($configFile);
 	}
 
@@ -37,9 +40,8 @@ class PPConfigManager {
 
 	//used to load the file
 	private function load($fileName) {
-
 		$this->config = @parse_ini_file($fileName);
-		if($this->config == NULL || count($this->config) == 0) {
+        if($this->config == NULL || count($this->config) == 0) {
 			throw new PPConfigurationException("Config file $fileName not found","303");
 		}
 	}

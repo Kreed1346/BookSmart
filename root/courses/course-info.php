@@ -1,6 +1,7 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
     require_once($INC_DIR . "header.php");
     require_once("course.php");
+    require_once("book-lookup.php");
     session_start();
 ?>
 <?php
@@ -133,17 +134,30 @@
                         if (!empty($textbook) && $textbook != null) {
                             $isbn_used = "";//(!empty($textbook['ISBN_v10'])) ? substr($textbook['ISBN_v10'], 8) : substr($textbook['ISBN_v13'], 11);
                             $linkId = "";
+                            echo '<li class="book-result">';
+                            $lookup = null;
                             if (!empty($textbook['ISBN_v10'])) {
                                 $isbn_used = substr($textbook['ISBN_v10'], 8);
-                                $linkId = "CT2AYIAC6JDFTZV4";
-                            } else {
+                                $lookup = BookLookup::runGoogleBooksRESTCall($isbn_used);
+                                if ($lookup["totalItems"] == 0) {
+                                    $lookup = null;
+                                }
+                            } else if ($lookup == null && !empty($textbook['ISBN_v13'])) {
                                 $isbn_used = substr($textbook['ISBN_v13'], 11);
-                                $linkId = "7QXKSLMMEAKCSN65";
+                                $lookup = BookLookup::runGoogleBooksRESTCall($isbn_used);
                             }
-                            echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=' . $linkId . '" target="blank">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a></li>'; 
-//                            $isbn_used = substr($isbn_used, 8);
-//                            echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a></li>';
-//                            echo '<li><a rel="nofollow" href="http://www.amazon.com/gp/product/1118531647/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1118531647&linkCode=as2&tag=book0920-20&linkId=7QXKSLMMEAKCSN65">JavaScript and JQuery: Interactive Front-End Web Development</a></li>';
+                            if ($lookup != null) {
+                                $thumbnail_url = $lookup["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"];
+                                echo '<img src="'.$thumbnail_url.'"/>';
+                            } else {
+                                echo '<img src="../assets/images/book-placholder.png"/>';
+                            }
+                            
+                            
+                            echo '<a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4" target="blank">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a>'; //return link to amazon product page
+                            
+                            echo '</li>';
+                            
                         }
                         
                     }

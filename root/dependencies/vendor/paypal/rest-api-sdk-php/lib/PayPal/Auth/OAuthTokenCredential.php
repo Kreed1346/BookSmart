@@ -73,6 +73,11 @@ class OAuthTokenCredential {
 	 * Generates a new access token
 	 */
 	private function generateAccessToken() {
+//        $this->logger->info("ACCESS TOKEN GENERATION BEGINNING");
+//        $this->logger->info($this->clientId);
+//        $this->logger->info($this->clientSecret);
+//        $this->logger->info(base64_encode($this->clientId . ":" . $this->clientSecret));
+//        $this->logger->info("ACCESS TOKEN GENERATION ENDING");
 		return $this->generateOAuthToken(base64_encode($this->clientId . ":" . $this->clientSecret));		
 	}
 	
@@ -112,6 +117,17 @@ class OAuthTokenCredential {
 		
 		$baseEndpoint = ($configMgr->get("oauth.EndPoint") != '' && !is_array($configMgr->get("oauth.EndPoint"))) ? 
 			$configMgr->get("oauth.EndPoint") : $configMgr->get("service.EndPoint");
+        
+        if (is_array($baseEndpoint)) {
+            $this->logger->info("Starting logging of baseEndpoint properties --- ");
+            $this->logger->info(var_dump($baseEndpoint)." --- ");
+            $this->logger->info("Ending logging of baseEndpoint properties");
+            $this->logger->info("Config file still not working properly, defaulting the service.Endpoint to the paypal sandbox api call");
+            $baseEndpoint = null;
+            $baseEndpoint = "";
+            $baseEndpoint = "https://api.sandbox.paypal.com";
+        }
+        
 		$baseEndpoint = rtrim(trim($baseEndpoint), '/');		 
 		return new \PPHttpConfig($baseEndpoint . "/v1/oauth2/token", "POST");
 	}

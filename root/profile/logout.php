@@ -6,5 +6,5 @@
 
     session_write_close();
 
-    Print '<script>window.location.assign("../home/index.php");</script>';
+    header("Location: ../home/index.php");
 ?>

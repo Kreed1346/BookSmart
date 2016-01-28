@@ -25,7 +25,8 @@
         "paypal/rest-api-sdk-php" : "0.5.*",
         "google/apiclient": "1.0.*@beta",
         "aws/aws-sdk-php": "^3.13",
-        "anahkiasen/underscore-php": "^2.0"
+        "anahkiasen/underscore-php": "^2.0",
+        "rych/phpass": "3.0.*@beta"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"
