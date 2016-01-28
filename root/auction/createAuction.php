@@ -19,13 +19,32 @@
                 <label for="auctionTitle">Auction Title</label>
                 <input type="text" name="auctionTitle" placeholder="Enter auction title here." required/><br/>
                 <label for="auctionDesc">Auction Description</label>
-                <textarea rows="4" cols="50" placeholder="Enter auction description here." required></textarea><br/>
+                <textarea name="auctionDesc" rows="4" cols="50" placeholder="Enter auction description here." required></textarea><br/>
                 <label for="isbn">ISBN of Book for Sale</label>
-                <input class="cvv" type="text" name="isbn" pattern="[0-9]{10,13}" required><br/>
+                <input type="text" name="isbn" pattern="[0-9]{10,13}" required><br/>
                 <label for="bin_price">Buy-It-Now Price</label>
                 <input type="number" min="0.01" step="0.01" max="500" value="0.01" name="bin_price"/><br/>
-
                 <input class="submit-btn" type="submit" name="submit" value="Submit">
             </form>
         </section>
 <?php require($INC_DIR . "footer.php"); ?>
+
+<?php
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $link = mysqli_connect("localhost", "root", "booksmart", "booksmart");
+            if (mysqli_connect_errno()) {
+                printf("Connect failed: %s\n", mysqli_connect_error());
+                exit();
+            }
+            
+            $auctionTitle = mysqli_real_escape_string($link, $_POST['auctionTitle']);
+            $auctionDesc = mysqli_real_escape_string($link, $_POST['auctionDesc']);
+            $isbn = mysqli_real_escape_string($link, $_POST['isbn']);
+            $bin_price = mysqli_real_escape_string($link, $_POST['bin_price']);
+            
+            $auction_id = ""; //will update after pass off today
+
+            mysqli_close($link);
+            header("Location: auctionInfo.php?auction_id=".$auction_id);
+        }
+?>
