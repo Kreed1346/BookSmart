@@ -18,6 +18,19 @@
             $lookup = json_decode($json_response, true);
             return $lookup;
         }
+        
+        public static function returnSmallThumbnailURL($book) {
+            return $book["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"];
+        }
+        
+        public static function returnBookPrice($book) {
+            if ($book != null) {
+                if (isset($book["items"][0]["volumeInfo"]["saleInfo"]["listPrice"])) {
+                    return "Price: $" . $book["items"][0]["volumeInfo"]["saleInfo"]["listPrice"]["amount"];
+                }
+            } 
+            return "Price: Not available";
+        }
     }
 
 

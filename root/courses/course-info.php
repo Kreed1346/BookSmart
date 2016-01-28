@@ -74,7 +74,10 @@
         mysqli_close($link);
     }
 ?>
-        <a href="search.php">&#10094; Return to Course Search</a>
+        <nav class="profile-header">
+            <a class="return" href="../courses/search.php">&#10094; Return to Course Search Page</a>
+            <p></p>
+        </nav>
         <section id="course-info">
             <h1>
                 <?php
@@ -103,7 +106,7 @@
                 <?php
                     foreach($_SESSION["COURSE_INFO"]->getInstructors() as $instructor) {
                         if (!empty($instructor)) {
-                            echo "<li>$instructor</li>";
+                            echo '<li class="instructor">'.$instructor.'</li>';
                         }
                         
                     }
@@ -134,27 +137,28 @@
                         if (!empty($textbook) && $textbook != null) {
                             $isbn_used = "";//(!empty($textbook['ISBN_v10'])) ? substr($textbook['ISBN_v10'], 8) : substr($textbook['ISBN_v13'], 11);
                             $linkId = "";
-                            echo '<li class="book-result">';
+                            echo '<li class="book-result custom-box-shadow">';
                             $lookup = null;
+                            $thumbnail_url = "";
                             if (!empty($textbook['ISBN_v10'])) {
                                 $isbn_used = substr($textbook['ISBN_v10'], 8);
-                                $lookup = BookLookup::runGoogleBooksRESTCall($isbn_used);
-                                if ($lookup["totalItems"] == 0) {
-                                    $lookup = null;
-                                }
                             } else if ($lookup == null && !empty($textbook['ISBN_v13'])) {
                                 $isbn_used = substr($textbook['ISBN_v13'], 11);
-                                $lookup = BookLookup::runGoogleBooksRESTCall($isbn_used);
-                            }
-                            if ($lookup != null) {
-                                $thumbnail_url = $lookup["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"];
-                                echo '<img src="'.$thumbnail_url.'"/>';
-                            } else {
-                                echo '<img src="../assets/images/book-placholder.png"/>';
                             }
                             
+                            $lookup = BookLookup::runGoogleBooksRESTCall($isbn_used);
+                            if ($lookup['totalItems'] == 0) {
+                                $lookup = null;
+                                $thumbnail_url = "../assets/images/smallThumbnailPlaceholder.png";
+                            } else if ($lookup != null) {
+                                $thumbnail_url = BookLookup::returnSmallThumbnailURL($lookup);
+                            }
+                            $price_tag = BookLookup::returnBookPrice($lookup);
+                            echo '<img src="'.$thumbnail_url.'"/>';
                             
-                            echo '<a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4" target="blank">' . $textbook['Text_Name'] . "; Author: " . $textbook['Primary_Author'] . '</a>'; //return link to amazon product page
+                            echo '<aside><p><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4" target="blank">' . $textbook['Text_Name'] . '</a></p>'; //return link to amazon product page
+                            echo '<p> Author: ' . $textbook['Primary_Author'] . '</p>';
+                            echo '<p>'.$price_tag.'</p></aside>';
                             
                             echo '</li>';
                             
