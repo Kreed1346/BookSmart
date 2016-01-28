@@ -343,3 +343,13 @@ input {
     color: #FFD57F;
 }
 
+#auction {
+    background-color: #1D3926;
+    padding: 10px 20px 20px 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+#auction form label {
+    color: #FFD57F;
+}

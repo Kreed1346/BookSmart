@@ -3,7 +3,7 @@
     session_start();
 ?>
         <nav class="profile-header">
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
+            <a class="return" href="../auction/auctionLanding.php">&#10094; Return to Auction Landing Page</a>
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
                 echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
@@ -13,4 +13,7 @@
             }
         ?>
         </nav>
+        <section>
+            
+        </section>
 <?php require($INC_DIR . "footer.php"); ?>

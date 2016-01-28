@@ -16,7 +16,7 @@
             <h1 class="less-bottom-margin">Resources</h1>
             <hr/>
             <h2><a href="../courses/search.php">Search for Courses</a></h2>
-            <h2><a href="../auction/auctionLanding.php">Search for Book Auctions</a></h2>
+            <h2><a href="../auction/auctionLanding.php">Book Auctions</a></h2>
             <h1 class="top-margin less-bottom-margin">Profile</h1>
             <hr/>
             <h2><a href="profileSettings.php">Change Profile Settings</a></h2>
