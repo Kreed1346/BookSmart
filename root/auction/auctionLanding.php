@@ -15,12 +15,7 @@
         </nav>
         <aside class="resource-sidebar">
             <h1 class="less-bottom-margin">Auctions</h1>
-            <?php
-                $creation_time = date('Y-m-d H:i:s', strtotime("now"));
-                echo '<p>'.$creation_time.'</p>';
-//                $creation_date = date_create($creation_time);
-//                echo '<p>'.date_format($creation_date, 'Y-m-d H:i:s').'</p>';
-            ?>
+
             <hr/>
             <h2><a href="../auction/createAuction.php">Start an Auction</a></h2>
             <h2><a href="../auction/auctionSearch.php">Search for Auctions</a></h2>
