@@ -33,11 +33,8 @@
                 $auction->setUserId($row['user_id']);
                 $auction->setCreationTime($row['auction_creation_time']);
                 $auction->setEndTime($row['auction_end_time']);
-                if (isset($row['auction_ended'])) {
-                    $auction->setAuctionEnded($row['auction_ended']);
-                } else if (isset($row['winner_username'])) {
-                    $auction->setWinnerUserName($row['winner_username']);
-                }
+                $auction->setAuctionEnded($row['auction_ended']);
+                $auction->setWinnerUserName($row['winner_username']);
             }
         }
         $user_id = $auction->getUserId();
@@ -100,7 +97,7 @@
             $_SESSION['AUCTION_INFO']->setWinnerUserName($winner_username);
             
             mysqli_close($link);
-            header("Location: auctionInfo.php?auction_id={$_SESSION['AUCTION_INFO']->getAuctionId()}");
+//            header("Location: auctionInfo.php?auction_id={$_SESSION['AUCTION_INFO']->getAuctionId()}");
         }
         
     }
@@ -111,7 +108,7 @@
         <?php
             if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
                 echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
-                echo '<a class="logout" href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
+                echo '<a class="logout" href="../profile/logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
             } else {
                 header("Location: ../login/login.php");
             }
@@ -159,7 +156,7 @@
                 <?php $bid_display_price = ($_SESSION['AUCTION_INFO']->getStartBidPrice() < $_SESSION['AUCTION_BID']) ? $_SESSION['AUCTION_BID'] : $_SESSION['AUCTION_INFO']->getStartBidPrice(); 
                     if ($_SESSION['AUCTION_INFO']->getAuctionEnded()) {
                         if ($_SESSION['username'] === $_SESSION['AUCTION_INFO']->getSellerUserName()) {
-                            echo '<p>Auction has ended. User'. $_SESSION['AUCTION_INFO']->getWinnerUserName() .' won the book</p>';
+                            echo '<p>Auction has ended. User '. $_SESSION['AUCTION_INFO']->getWinnerUserName() .' won the book.</p>';
                         } else {
                             echo '<p>Auction has ended.</p>';
                         }
