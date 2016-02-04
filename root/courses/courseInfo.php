@@ -1,7 +1,7 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
     require_once($INC_DIR . "header.php");
     require_once("course.php");
-    require_once("bookLookup.php");
+    require_once("../books/bookLookup.php");
     session_start();
 ?>
 <?php
@@ -78,7 +78,7 @@
             <a class="return" href="../courses/search.php">&#10094; Return to Course Search Page</a>
             <p></p>
         </nav>
-        <section id="course-info">
+        <section class="info">
             <h1>
                 <?php
                     echo $_SESSION['COURSE_INFO']->getCourseCode() . " - " . $_SESSION["COURSE_INFO"]->getCourseDesc() . "<hr/>";

@@ -73,6 +73,7 @@ input {
     padding: 10px 20px;
     border-radius: 10px;
     color: #FFFDEB;
+    margin-top: 5px;
     font-family: 'Rosarivo', serif;
     background-color: #37734C;
     box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
@@ -195,19 +196,19 @@ input {
     background-color: #815217;
 }
 
-#course-info {
+.info {
     margin: 20px 10px;
     padding: 20px;
     background-color: #1D3926;
     border-radius: 20px;
 }
 
-#course-info h2 {
+.info h2 {
     color: #FFD57F;
     font-family: 'Marcellus SC', serif;
 }
 
-#course-info ul {
+.info ul {
     list-style: none;
     margin-bottom: 20px;
 }
@@ -248,6 +249,10 @@ input {
 }
 
 .book-result aside p a:hover {
+    color: #FFFDEB;
+}
+
+.book-result aside form label {
     color: #FFFDEB;
 }
 
@@ -351,5 +356,20 @@ input {
 }
 
 #auction form label {
+    color: #FFD57F;
+}
+
+.sub-text {
+    background-color: #815217;
+    border-radius: 20px;
+/*    height: 85px;*/
+    width: 300px;
+    padding: 5px;
+    margin: 5px auto;
+}
+
+.sub-text p {
+    font-family: 'Rosarivo', serif;
+    font-size: 14px;
     color: #FFD57F;
 }

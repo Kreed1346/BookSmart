@@ -12,9 +12,7 @@
             curl_setopt($ch, CURLOPT_URL, "https://www.googleapis.com/books/v1/volumes?q=isbn:".$isbn);
             $json_response = curl_exec($ch);
             curl_close($ch);
-            
-//            $json_response = file_get_contents();
-//            var_dump($json_response);
+
             $lookup = json_decode($json_response, true);
             return $lookup;
         }

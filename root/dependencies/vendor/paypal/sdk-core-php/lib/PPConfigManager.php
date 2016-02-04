@@ -21,9 +21,9 @@ class PPConfigManager {
 			$configFile = "../config/sdk_config.ini";//implode(DIRECTORY_SEPARATOR, array(dirname(__FILE__), "..", "config", "sdk_config.ini"));
 		}
 
-//        if (file_exists($configFile)) {
-//            $this->load($configFile);
-//        }
+        if (file_exists($configFile)) {
+            $this->load($configFile);
+        }
 
         
 		$this->load($configFile);

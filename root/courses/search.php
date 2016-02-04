@@ -39,6 +39,8 @@
                     } else {
                         echo "<p>No courses found matching the search parameters.</p>";
                     }
+                } else {
+                    echo "<p>A search has not been ran yet.</p>";
                 }
                 
             ?>

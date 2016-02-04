@@ -6,7 +6,6 @@
         define('PP_CONFIG_PATH', $_SERVER["DOCUMENT_ROOT"]."BookSmart/root/dependencies/vendor/paypal/rest-api-sdk-php/lib/PayPal");
 //    } 
 ?>
-        <p><?php echo __DIR__; ?></p>
         <nav>
             <a class="login-link" href="../login/login.php"><h4>Login</h4></a>
             <a class="login-link" href="../login/register.php"><h4>Register</h4></a>  

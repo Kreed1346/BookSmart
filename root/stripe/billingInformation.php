@@ -13,12 +13,6 @@
             }
         ?>
         </nav>
-        <?php
-            if (isset($_SESSION['CARD_CREATED']) && $_SESSION['CARD_CREATED']) {
-                echo "<div class='update-notif'><h1>Card added!</h1></div>";
-                $_SESSION['CARD_CREATED'] = false;
-            }
-        ?>
         <section class="cc-content">
             <h1>Billing Information</h1>
             <hr/>
