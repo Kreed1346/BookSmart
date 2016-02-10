@@ -1,19 +1,12 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
-    require($INC_DIR . "header.php");
     session_start();
+    require($INC_DIR . "header.php");
+    require($INC_DIR . "top-navbar.php");
 ?>
-        <nav class="profile-header">
-            <a class="return" href="../auction/auctionLanding.php">&#10094; Return to Auction Landing Page</a>
-        <?php
-            if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
-                echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
-                echo '<a class="logout" href="../profile/logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
-            } else {
-                header("../login/login.php");
-            }
-        ?>
-        </nav>
+        
         <section id="auction">
+            <br/>
+            <a class="return" href="../auction/auctionLanding.php">&#10094; Return to Auction Landing Page</a>
             <h1>Create an Auction Listing</h1>
             <form action="createAuction.php" method="POST">
                 <label for="auctionTitle">Auction Title</label><br/>

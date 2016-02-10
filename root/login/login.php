@@ -7,7 +7,7 @@
 ?>
         <section class="login-form">
             <h1>Login to your account</h1>
-            <a class="return" href="../home/index.php">Return to Home</a>
+            <a class="return" href="../home/index.php">&#10094; Return to Home</a>
             <form action="login.php" method="POST">
                 <label for="username">Username: </label>
                 <input type="text" name="username" required="required" placeholder="Enter username here."/>
@@ -53,7 +53,7 @@
         }
         
         //if the user's username and password are found in the db and found to be accurate, log them in
-        if($accurateLoginInfo) {
+        if($accurateLoginInfo && $_SESSION['registered']) {
             
             if (!empty($user_displayname)) {
                 $_SESSION["displayname"] = $user_displayname;

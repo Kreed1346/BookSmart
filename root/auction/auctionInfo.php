@@ -1,8 +1,9 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
+    session_start();
     require_once($INC_DIR . "header.php");
+    require_once($INC_DIR . "top-navbar.php");
     require_once("auction.php");
     require_once("../books/bookLookup.php");
-    session_start();
 ?>
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -102,19 +103,8 @@
         
     }
 ?>
-
-        <nav class="profile-header">
-            <a class="return" href="../auction/auctionSearch.php">&#10094; Return to Auction Search Page</a>
-        <?php
-            if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
-                echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
-                echo '<a class="logout" href="../profile/logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
-            } else {
-                header("Location: ../login/login.php");
-            }
-        ?>
-        </nav>
         <section class="info">
+            <a class="return" href="../auction/auctionSearch.php">&#10094; Return to Auction Search Page</a>
             <h1>
                 <?php
                     echo "Auction #" . $_SESSION['AUCTION_INFO']->getAuctionId() . " - " . $_SESSION["AUCTION_INFO"]->getAuctionTitle();
@@ -172,7 +162,7 @@
                             echo '<script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_SHZ2ku3SsJWVPUZkb2gMFCxn"
-                                data-image="/img/documentation/checkout/marketplace.png"
+                                data-image="../assets/images/booksmart-logo-small.png"
                                 data-name="BookSmart Auction Purchase"
                                 data-description="'.$_SESSION["AUCTION_TEXTBOOK"]['Text_Name'].'"
                                 data-amount="'.($_SESSION['AUCTION_INFO']->getBINPrice() * 100).'"

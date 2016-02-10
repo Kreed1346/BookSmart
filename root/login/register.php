@@ -7,7 +7,7 @@
 ?>
         <section class="login-form">
             <h1>Register an account</h1>
-            <a class="return" href="../home/index.php">Return to Home</a>
+            <a class="return" href="../home/index.php">&#10094; Return to Home</a>
             <form action="register.php" method="POST">
                 <label for="username">Username: </label>
                 <input type="text" name="username" required="required" placeholder="Enter username here." required/>
@@ -65,11 +65,6 @@
             }
         }
         
-//        $options = [
-//            'cost' => 11,
-//            'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-//        ];
-
         $hashPass = password_hash($password, PASSWORD_BCRYPT);//, $options); is this breaking it?
         
         $query = mysqli_query($link, "SELECT * FROM users"); //query users table
@@ -88,15 +83,19 @@
         
         //if the username isn't already in the database and the email fields match, create and add a new user, logging them in
         if($uniqueUser && $sameEmail) {
-            mysqli_query($link, "INSERT INTO users (username, password, displayname, email) VALUES ('$username','$hashPass','$displayname','$confirmEmail')");
-            header("Location: ../profile/profile.php");
-            if (!empty($displayname)) {
-                $_SESSION["displayname"] = $displayname;
-            } else {
-                $_SESSION["displayname"] = $username;
-            }
-            $_SESSION["username"] = $username;
-            $_SESSION["isLoggedIn"] = true;
+            $confirm_code = md5(uniqid(rand()));
+            mysqli_query($link, "INSERT INTO temp_users (confirmation_code, username, password, displayname, email) VALUES ('$confirm_code','$username','$hashPass','$displayname','$confirmEmail')");
+            
+            $to = $confirmEmail;
+            $subject = 'BookSmart Registration Confirmation';
+
+            $headers = "From: " . strip_tags("admin@booksmart.com") . "\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            
+            $message = "<html><body><p>Thanks for signing up with BookSmart! Please activate your account by clicking through the link located<a href='http://localhost/BookSmart/root/login/confirmAccount.php?conf=$confirm_code'>here</a>.</p></body></html>";
+            mail($to, $subject, $message, $headers);
+            header("Location: ../login/registrySuccess.php");
             session_write_close();
         }
         

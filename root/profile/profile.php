@@ -1,17 +1,8 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
-    require($INC_DIR . "header.php");
     session_start();
+    require($INC_DIR . "header.php");
+    require($INC_DIR . "top-navbar.php");
 ?>
-        <nav class="profile-header">
-        <?php
-            if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
-                echo '<h1><a class="profile-name-link" href="profile.php">Welcome, ' . $_SESSION["displayname"] . '</a></h1>';
-                echo '<a class="logout" href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
-            } else {
-                Print '<script>window.location.assign("../login/login.php");</script>';
-            }
-        ?>
-        </nav>
         <aside class="resource-sidebar">
             <h1 class="less-bottom-margin">Resources</h1>
             <hr/>
