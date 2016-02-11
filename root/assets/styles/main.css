@@ -54,6 +54,9 @@ footer {
     margin: 0px auto 100px auto;
     
 }
+.inset-box-shadow {
+    box-shadow: inset 0px 0px 25px rgba(0,0,0,0.5);
+}
 
 .custom-box-shadow {
     box-shadow: 0px 5px 25px rgba(0,0,0,0.1);
@@ -100,6 +103,16 @@ input {
 }
 
 #registry-success {
+    width: 500px;
+    background-color: #A17237;
+    color: #FFD57F;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    margin: 10px auto;
+    font-family: 'Rosarivo', serif;
+}
+
+#confirmed {
     width: 500px;
     background-color: #A17237;
     color: #FFD57F;
@@ -417,7 +430,6 @@ input {
 .sub-text {
     background-color: #815217;
     border-radius: 20px;
-/*    height: 85px;*/
     width: 300px;
     padding: 5px;
     margin: 5px auto;

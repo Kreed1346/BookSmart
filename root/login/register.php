@@ -1,4 +1,5 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
+    $SWIFT_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/dependencies/vendor/swiftmailer/swiftmailer/";
     require($INC_DIR. "header.php");
     session_start();
     if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
@@ -30,6 +31,7 @@
         
 <?php require($INC_DIR. "footer.php"); ?>
 <?php 
+    require_once $SWIFT_DIR . 'lib/swift_required.php';
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         
         //Open connection to db and stay connected until closed
@@ -67,10 +69,10 @@
         
         $hashPass = password_hash($password, PASSWORD_BCRYPT);//, $options); is this breaking it?
         
-        $query = mysqli_query($link, "SELECT * FROM users"); //query users table
+        $user_query = mysqli_query($link, "SELECT * FROM users"); //query users table
         
         //Checks the database to see if a user with the same username is found
-        while($row = mysqli_fetch_array($query)) {
+        while($row = mysqli_fetch_array($user_query)) {
             $table_user = $row['username'];
             //if the user to be inputed's username matches one already in the db
             if($username === $table_user) {
@@ -81,21 +83,37 @@
             }
         }
         
+        if ($uniqueUser) {
+            $temp_user_query = mysqli_query($link, "SELECT * FROM temp_users"); //query users table
+
+            //Checks the database to see if a user with the same username is found
+            while($row = mysqli_fetch_array($temp_user_query)) {
+                $table_user = $row['username'];
+                //if the user to be inputed's username matches one already in the db
+                if($username === $table_user) {
+                    //make sure the user with a duplicate name cannot be added to the db
+                    $uniqueUser = false;
+                    Print '<script>alert("Username is already taken.");</script>';
+                    header("Location: register.php");
+                }
+            }
+        }
+        
         //if the username isn't already in the database and the email fields match, create and add a new user, logging them in
         if($uniqueUser && $sameEmail) {
             $confirm_code = md5(uniqid(rand()));
             mysqli_query($link, "INSERT INTO temp_users (confirmation_code, username, password, displayname, email) VALUES ('$confirm_code','$username','$hashPass','$displayname','$confirmEmail')");
             
-            $to = $confirmEmail;
-            $subject = 'BookSmart Registration Confirmation';
-
-            $headers = "From: " . strip_tags("admin@booksmart.com") . "\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            $transport = Swift_SmtpTransport::newInstance('localhost', 25);
+            $body = "<html><body><p>Thanks for signing up with BookSmart! Please activate your account by clicking through the link located <a href='http://localhost/BookSmart/root/login/registrySuccess.php?conf=$confirm_code'>here</a>.</p></body></html>";
+            $mailer = Swift_Mailer::newInstance($transport);
+            $message = Swift_Message::newInstance('BookSmart Registration Confirmation')
+                ->setFrom(array('kurtreed1346@gmail.com'=>'BookSmart Administrator'))
+                ->setTo(array($confirmEmail => $displayname))
+                ->setBody($body, 'text/html');
             
-            $message = "<html><body><p>Thanks for signing up with BookSmart! Please activate your account by clicking through the link located<a href='http://localhost/BookSmart/root/login/confirmAccount.php?conf=$confirm_code'>here</a>.</p></body></html>";
-            mail($to, $subject, $message, $headers);
-            header("Location: ../login/registrySuccess.php");
+            $result = $mailer->send($message);
+            header("Location: ../login/confirmAccount.php");
             session_write_close();
         }
         

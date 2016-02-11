@@ -4,6 +4,9 @@
     if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
         header("Location: ../profile/profile.php");
     }
+    if (isset($_SESSION["registered"])) {
+        unset($_SESSION["registered"]);
+    }
 ?>
         <section class="login-form">
             <h1>Login to your account</h1>
@@ -53,7 +56,7 @@
         }
         
         //if the user's username and password are found in the db and found to be accurate, log them in
-        if($accurateLoginInfo && $_SESSION['registered']) {
+        if($accurateLoginInfo) {
             
             if (!empty($user_displayname)) {
                 $_SESSION["displayname"] = $user_displayname;

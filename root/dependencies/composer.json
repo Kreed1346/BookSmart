@@ -26,7 +26,8 @@
         "google/apiclient": "1.0.*@beta",
         "aws/aws-sdk-php": "^3.13",
         "anahkiasen/underscore-php": "^2.0",
-        "rych/phpass": "3.0.*@beta"
+        "rych/phpass": "3.0.*@beta",
+        "swiftmailer/swiftmailer": "@stable"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"

@@ -1,7 +1,9 @@
 <nav class="profile-header">
     <aside>
-        <img src="../assets/images/booksmart-logo.png"/>
-        <p>ookSmart</p>
+        <a href="../profile/profile.php">
+            <img src="../assets/images/booksmart-logo.png"/>
+            <p>ookSmart</p>
+        </a>
     </aside>
 <?php
     if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {

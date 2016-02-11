@@ -1,18 +1,8 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
-    require($INC_DIR . "header.php");
     session_start();
+    require($INC_DIR . "header.php");
+    require($INC_DIR . "top-navbar.php");
 ?>
-        <nav class="profile-header">
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
-        <?php
-            if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
-                echo '<h1><a class="profile-name-link" href="profile.php">' . $_SESSION["displayname"] . '</a></h1>';
-                echo '<a class="logout" href="logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
-            } else {
-                header("../login/login.php");
-            }
-        ?>
-        </nav>
         <?php
             if (isset($_SESSION['UPDATED']) && $_SESSION['UPDATED']) {
                 echo "<div class='update-notif'><h1>Profile updated!</h1></div>";
@@ -20,6 +10,8 @@
             }
         ?>
         <section id="profile-settings">
+            <br/>
+            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
             <h1>Profile Settings</h1>
             <form action="changeSettings.php" method="POST">
                 <label for="displayname">Display Name: </label>

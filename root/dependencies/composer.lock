@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f9b4f76b5e13bcb1e28d4a0ccfc75d9",
-    "content-hash": "6ef4bdda53098af3084ed2bc0010717b",
+    "hash": "a0fd48c7c6ec5b4af5d3bcd17ba2b982",
+    "content-hash": "6d4d056db84ae95961bf9da6dbcef9e9",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -721,6 +721,59 @@
                 "security"
             ],
             "time": "2012-08-14 03:45:21"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
+                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1,<0.9.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
+            "time": "2015-06-06 14:19:39"
         }
     ],
     "packages-dev": [
@@ -1147,6 +1200,7 @@
     "stability-flags": {
         "google/apiclient": 10,
         "rych/phpass": 10,
+        "swiftmailer/swiftmailer": 0,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,

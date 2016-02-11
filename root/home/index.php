@@ -1,7 +1,7 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
     
 ?>
-    <section id="home">
+    <section id="home" class="custom-box-shadow">
         <?php require_once($INC_DIR. "header.php"); ?>
         <nav class="profile-header index-header custom-box-shadow">
             <?php
@@ -9,7 +9,7 @@
                 echo '<a class="login-link" href="../login/register.php">Register</a>';
             ?>
         </nav>
-        <section id="welcome" class="custom-box-shadow">
+        <section id="welcome" class="inset-box-shadow">
             <h1>Welcome to</h1>
             <h1 class="logo"><img src="../assets/images/booksmart-logo-small.png">ookSmart</h1>
             <a class="login-link" href="../login/login.php"><h2>Login</h2></a>
