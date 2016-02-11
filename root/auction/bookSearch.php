@@ -6,10 +6,10 @@
         exit();
     }
 
-    $defaultQuery = "SELECT DISTINCT Course_Code, Course_Desc FROM courses ORDER BY Course_Code ASC";// WHERE ";
+    $defaultQuery = "SELECT Text_Name, ISBN_v10, ISBN_v13 FROM textbooks ORDER BY Text_Name ASC";
     $query = mysqli_query($link, $defaultQuery);
 
-    if (isset($query)) {
+    if (isset($query) && $query !== null) {
         $searchResults = [];
         //Checks the database to see if a user with the same username is found
         while($row = mysqli_fetch_array($query)) {
@@ -17,8 +17,10 @@
                 array_push($searchResults, $row);
             }
         }
-        $_SESSION["SEARCH_RESULTS"] = $searchResults;
+//        var_dump($searchResults);
+        $_SESSION["BOOK_RESULTS"] = $searchResults;
     }
+//    $_SESSION["BOOK_RESULTS"] = []; //run this to reset the array
     mysqli_close($link);
     session_write_close();
 ?>
