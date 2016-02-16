@@ -5,22 +5,18 @@ html {
 
 #home {
     background-image: url("../images/backgrounds/home-bg.jpg");
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     padding: 10px;
     border-radius: 10px;
 }
 
-.logo {
-    position: relative;
-    right: 10px;
-    top: -20px;
-    font-size: 55px;
+.right-side-spacing {
+    margin-right: 10px;
 }
 
-.logo img {
+.shift-up {
     position: relative;
-    left: 15px;
-    top: 14px;
+    bottom: 3px;
 }
 
 h1 {
@@ -38,11 +34,14 @@ footer {
     background-color: #37734C;
     font-size: 20px;
     font-family: 'Marcellus SC', serif;
-    color: #FFFDEB;
     text-align: center;
     padding: 1px;
     border-radius: 20px;
     margin: 0 auto;
+}
+
+footer, footer a {
+    color: #BCCCA8;
 }
 
 #welcome {
@@ -54,6 +53,34 @@ footer {
     margin: 0px auto 100px auto;
     
 }
+
+#welcome section {
+    padding: 30px 10px 5px;
+}
+
+#welcome section h1:not(.logo) {
+    font-size: 32px;
+    margin: 0px auto;
+}
+
+#welcome h2 {
+    font-size: 26px;
+}
+
+.logo {
+    position: relative;
+    right: 10px;
+    top: -20px;
+    font-size: 55px;
+    margin: 10px auto 5px;
+}
+
+.logo img {
+    position: relative;
+    left: 15px;
+    top: 14px;
+}
+
 .inset-box-shadow {
     box-shadow: inset 0px 0px 25px rgba(0,0,0,0.5);
 }
@@ -69,6 +96,21 @@ footer {
 
 .login-link {
     font-family: 'Rosarivo', serif;
+    color: #FFFDEB;
+}
+
+.register-button {
+    background-color: #CFA54F;
+    width: 250px;
+    padding: 5px;
+    border-radius: 15px;
+    margin: 1px auto 25px;
+    box-shadow: inset 0px -3px 15px #A17237;
+}
+
+.register-button:hover {
+    background-color: #815217;
+    box-shadow: inset 0px 1px 10px rgba(0,0,0,0.3);
 }
 
 label {
@@ -188,8 +230,8 @@ input {
     top: 25px;
 }
 
-.resource-sidebar {
-    width: 400px;
+.sidebar {
+    
     background-color: #1D3926;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -197,7 +239,11 @@ input {
     border-radius: 20px;
 }
 
-.resource-sidebar hr {
+.profile-sidebar {
+    width: 400px;
+}
+
+.profile-sidebar hr {
     height: 1px;
     margin-left: auto;
     margin-right: auto;
@@ -206,8 +252,45 @@ input {
     border: 0 none;
 }
 
-.resource-sidebar h2 {
+.profile-sidebar h2 {
     font-family: 'Marcellus SC', serif;
+}
+
+.resource-sidebar {
+    width: 600px;
+}
+
+.resource-sidebar a aside {
+    width: 600px;
+    height: 100px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.resource-sidebar a aside p {
+    margin: 20px auto;
+    width: 500px;
+    position: relative;
+    top: 30px;
+    background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.5), rgba(0,0,0,0.5), rgba(0,0,0,0.0));
+    border-radius: 10px;
+}
+
+#profile-courses {
+    background-image: url("../images/buttons/course-search-small.jpg");
+    background-position: center;
+}
+
+#profile-auctions {
+    background-image: url("../images/buttons/textbook-auctions-small.jpg");
+    background-position: center;
+}
+
+.resource-link {
+    font-family: 'Marcellus SC', serif;
+    color: #FFD57F;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+    font-size: 28px;
 }
 
 .profile-name-link {
@@ -221,8 +304,15 @@ input {
     font-size: 14px;
 }
 
+.settings img{
+    position: relative;
+    top: 12px;
+    left: 12px;
+    width: 40px;
+}
+
 .search-form {
-    width: 500px;
+    width: 700px;
     background-color: #A17237;
     text-align: center;
     padding: 1px;
@@ -232,6 +322,18 @@ input {
 
 .search-form form {
     margin-top: 20px;
+}
+
+select {
+    height: 50px;
+    padding: 1px 1px 1px 15px;
+    font-family: 'Rosarivo', serif;
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+select optgroup option {
+    font-size: 20px;
 }
 
 #search-results {
@@ -293,14 +395,15 @@ input {
     font-size: 20px;
     width: 900px;
     font-family: 'Rosarivo', serif;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     margin-bottom: 20px;
     margin-right: 40px;
     border-radius: 20px;
 }
 
 .book-result img {
-    margin: 10px 10px -15px 10px;
+    width: 128px;
+    margin: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
 }
@@ -355,6 +458,10 @@ input {
 
 .less-bottom-margin {
     margin-bottom: -5px;
+}
+
+.more-bottom-margin {
+    margin-bottom: 20px;
 }
 
 .cc-content {
@@ -425,6 +532,16 @@ input {
 
 #auction form label {
     color: #FFD57F;
+}
+
+.thumbnail {
+    position: relative;
+    right: 18px;
+    bottom: 34px;
+}
+
+.left-aligned {
+    text-align: left;
 }
 
 .sub-text {

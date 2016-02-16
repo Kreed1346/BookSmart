@@ -1,8 +1,4 @@
 <?php
-//require_once("../dependencies/underscore.php");
-
-//$underscore = new __;
-
 class Course {
     private $course_code = "";
     private $course_desc = "";
@@ -22,14 +18,6 @@ class Course {
         
     }
     
-//    private function setStartTimesArray() {
-//        $this->start_times = [];
-//    }
-//    
-//    private function setEndTimesArray() {
-//        $this->end_times = [];
-//    }
-
     function setCourseCode($courseCode) {
         if($this->course_code != $courseCode) {
             $this->course_code = $courseCode;

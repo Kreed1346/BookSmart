@@ -4,22 +4,28 @@
     require($INC_DIR . "top-navbar.php");
     require 'courseSearch.php';
 ?>
-        <section class="search-form">
+        <section class="left-aligned">
             <br/>
             <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
+        </section>
+
+        <section class="search-form">
+            
             <h1>Search for a Course</h1>
             
             <form action="validateSearch.php" method="POST">
-                <label for="courseSearch" class="search-label">Chooose a Course from the dropdown menu: </label><br/>
+<!--                <label for="courseSearch" class="search-label">Choose a Course from the Dropdown Menu: </label><br/>-->
                 <select name="course" required>
-                    <option value="">Please select a course</option>
-                    <?php
-                        if (isset($_SESSION["SEARCH_RESULTS"])) {
-                            foreach ($_SESSION["SEARCH_RESULTS"] as $course) {
-                                echo "<option value='{$course["Course_Code"]}'>{$course["Course_Code"]} - {$course["Course_Desc"]}</option>";
+                    <optgroup>
+                        <option value="">Please Select a Course</option>
+                        <?php
+                            if (isset($_SESSION["SEARCH_RESULTS"])) {
+                                foreach ($_SESSION["SEARCH_RESULTS"] as $course) {
+                                    echo "<option value='{$course["Course_Code"]}'>{$course["Course_Code"]} - {$course["Course_Desc"]}</option>";
+                                }
                             }
-                        }
-                    ?>
+                        ?>
+                    </optgroup>
                 </select>
                 <br/>
                 <input class="submit-btn" type="submit" name="submit" value="Search"/>

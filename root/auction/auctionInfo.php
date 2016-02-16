@@ -138,7 +138,7 @@
                         } else if ($lookup != null) {
                             $thumbnail_url = BookLookup::returnSmallThumbnailURL($lookup);
                         }
-                        echo '<img src="'.$thumbnail_url.'"/>';
+                        echo '<aside><img class="thumbnail" src="'.$thumbnail_url.'"/></aside>';
                         echo '<aside><p>'.$textbook['Text_Name'].'</p>'; //book name
                         echo '<p>Author: ' . $textbook['Primary_Author'] . '</p>'; //book author
                     }
@@ -154,11 +154,11 @@
                         echo '<p>Current Highest Bid: '.$bid_display_price.'</p>';
                         if ($_SESSION['username'] !== $_SESSION['AUCTION_INFO']->getSellerUserName()) {
                             echo '<form action="placeBid.php" method="POST">';
-                            echo '<label for="new_bid">Place Bid:</label>';
-                            echo '<input type="number" name="new_bid" min="'.$bid_display_price.'" step="0.01" max="500" value="'.$bid_display_price.'" name="new_bid"/>';
-                            echo '<input class="submit-btn" type="submit" name="update_bid" value="Place Bid"></form>';
+                            echo '<label for="new_bid" class="right-side-spacing">Place Bid:</label>';
+                            echo '<input type="number" class="right-side-spacing shift-up" name="new_bid" min="'.$bid_display_price.'" step="0.01" max="500" value="'.$bid_display_price.'" name="new_bid"/>';
+                            echo '<input class="submit-btn shift-up" type="submit" name="update_bid" value="Place Bid"></form>';
                             echo '<form action="auctionInfo.php" method="POST">';
-                            echo '<label for="bin_price">Or, Buy-It-Now for '.$_SESSION['AUCTION_INFO']->getBINPrice().'</label>';
+                            echo '<label for="bin_price" class="right-side-spacing">Or, Buy-It-Now for '.$_SESSION['AUCTION_INFO']->getBINPrice().'</label>';
                             echo '<script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_SHZ2ku3SsJWVPUZkb2gMFCxn"

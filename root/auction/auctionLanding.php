@@ -3,7 +3,7 @@
     require_once($INC_DIR . "header.php");
     require_once($INC_DIR . "top-navbar.php");
 ?>
-        <aside class="resource-sidebar">
+        <aside class="sidebar profile-sidebar">
             <br/>
             <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
             <h1 class="less-bottom-margin">Auctions</h1>

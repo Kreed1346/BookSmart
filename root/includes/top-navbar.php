@@ -9,6 +9,7 @@
     if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
         echo '<h1><a class="profile-name-link" href="../profile/profile.php">' . $_SESSION["displayname"] . '</a></h1>';
         echo '<a class="logout" href="../profile/logout.php">Not ' . $_SESSION["displayname"] . '? Logout.</a>';
+        echo '<a class="settings" href="../profile/profileSettings.php"><img src="../assets/images/settings-gear.png"/></>';
     } else {
         header("Location: ../login/login.php");
     }
