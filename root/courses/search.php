@@ -16,7 +16,7 @@
             <form action="validateSearch.php" method="POST">
 <!--                <label for="courseSearch" class="search-label">Choose a Course from the Dropdown Menu: </label><br/>-->
                 <select name="course" required>
-                    <optgroup>
+<!--                    <optgroup>-->
                         <option value="">Please Select a Course</option>
                         <?php
                             if (isset($_SESSION["SEARCH_RESULTS"])) {
@@ -25,7 +25,7 @@
                                 }
                             }
                         ?>
-                    </optgroup>
+<!--                    </optgroup>-->
                 </select>
                 <br/>
                 <input class="submit-btn" type="submit" name="submit" value="Search"/>

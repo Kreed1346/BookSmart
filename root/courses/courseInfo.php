@@ -153,7 +153,7 @@
                                 $thumbnail_url = BookLookup::returnSmallThumbnailURL($lookup);
                             }
                             $price_tag = BookLookup::returnBookPrice($lookup);
-                            echo '<img src="'.$thumbnail_url.'"/>';
+                            echo '<aside><img class="thumbnail" src="'.$thumbnail_url.'"/></aside>';
                             
                             echo '<aside><p><a rel="nofollow" href="http://www.amazon.com/gp/product/' . $isbn_used . '/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=' . $isbn_used . '&linkCode=as2&tag=book0920-20&linkId=CT2AYIAC6JDFTZV4" target="blank">' . $textbook['Text_Name'] . '</a></p>'; //return link to amazon product page
                             echo '<p> Author: ' . $textbook['Primary_Author'] . '</p>'; //book author

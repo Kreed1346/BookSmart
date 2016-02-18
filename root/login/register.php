@@ -7,23 +7,24 @@
     }
 ?>
         <section class="login-form">
-            <h1>Register an account</h1>
+            <br/>
             <a class="return" href="../home/index.php">&#10094; Return to Home</a>
+            <h1>Register an account</h1>
             <form action="register.php" method="POST">
                 <label for="username">Username: </label>
-                <input type="text" name="username" required="required" placeholder="Enter username here." required/>
+                <input type="text" name="username" required="required" placeholder="Enter something unique." required/>
                 <br/>
                 <label for="password">Password: </label>
-                <input type="password" name="password" required="required" placeholder="Enter password here." required/>
+                <input type="password" name="password" required="required" placeholder="Enter something secure." required/>
                 <br/>
                 <label for="displayname">Display Name: </label>
-                <input type="text" name="displayname" placeholder="Choose a display name here."/>
+                <input type="text" name="displayname" placeholder="What name do you go by?"/>
                 <br/>
                 <label for="displayname">Email: </label>
-                <input type="text" name="email" placeholder="Enter your email here." required/>
+                <input type="text" name="email" placeholder="Where can we contact you?" required/>
                 <br/>
                 <label for="displayname">Confirm Email: </label>
-                <input type="text" name="confirm-email" placeholder="Confirm your email here." required/>
+                <input type="text" name="confirm-email" placeholder="Double check that." required/>
                 <br/>
                 <input class="submit-btn" type="submit" name="submit" value="Register"/>
             </form>

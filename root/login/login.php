@@ -9,8 +9,9 @@
     }
 ?>
         <section class="login-form">
-            <h1>Login to your account</h1>
+            <br/>
             <a class="return" href="../home/index.php">&#10094; Return to Home</a>
+            <h1>Login to your account</h1>
             <form action="login.php" method="POST">
                 <label for="username">Username: </label>
                 <input type="text" name="username" required="required" placeholder="Enter username here."/>

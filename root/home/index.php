@@ -5,8 +5,7 @@ require_once($INC_DIR. "header.php");
         
         <nav class="profile-header index-header custom-box-shadow">
             <?php
-                echo '<a class="login-link" href="../login/login.php">Already a member? Login here.</a>';
-//                echo '<a class="login-link" href="../login/register.php">Register</a>';
+                echo '<a class="login-link login-btn" href="../login/login.php"><p>Already a member? Login here.<p></a>';
             ?>
         </nav>
         <section id="welcome" class="inset-box-shadow">

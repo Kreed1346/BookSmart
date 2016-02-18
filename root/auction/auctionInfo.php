@@ -1,8 +1,8 @@
 <?php $INC_DIR = $_SERVER["DOCUMENT_ROOT"]. "/BookSmart/root/includes/";
+    require_once("auction.php");
     session_start();
     require_once($INC_DIR . "header.php");
     require_once($INC_DIR . "top-navbar.php");
-    require_once("auction.php");
     require_once("../books/bookLookup.php");
 ?>
 <script src="https://checkout.stripe.com/checkout.js"></script>
@@ -81,8 +81,8 @@
         mysqli_close($link);
         
     } else if($_SERVER["REQUEST_METHOD"] == "POST") {
-        
         if (isset($_POST['bought']) && $_POST['bought']) {
+            
             $link = mysqli_connect("localhost", "root", "booksmart", "booksmart");
             if (mysqli_connect_errno()) {
                 printf("Connect failed: %s\n", mysqli_connect_error());
@@ -91,14 +91,45 @@
             
             $auction_ended = mysqli_real_escape_string($link, $_POST['bought']);
             $winner_username = mysqli_real_escape_string($link, $_POST['buyer']);
-            
             $auction_query = mysqli_query($link, "UPDATE auctions SET auction_ended='1', winner_username='$winner_username' WHERE auction_id='{$_SESSION['AUCTION_INFO']->getAuctionId()}'");
-            
             $_SESSION['AUCTION_INFO']->setAuctionEnded($auction_ended);
             $_SESSION['AUCTION_INFO']->setWinnerUserName($winner_username);
             
+            $user_query = mysqli_query($link, "SELECT * FROM users WHERE username='".$_SESSION['AUCTION_INFO']->getSellerUserName()."' OR username='".$_SESSION['AUCTION_INFO']->getWinnerUserName()."'");
+            $seller_email = "";
+            $winner_email = "";
+            while ($row = mysqli_fetch_array($user_query)) {
+                if ($row['username'] === $_SESSION['AUCTION_INFO']->getSellerUserName()) {
+                    $seller_email = $row['email'];
+                } else {
+                    $winner_email = $row['email'];
+                }
+            }
+            
+            if (!empty($seller_email) && !empty($winner_email)) {
+                $transport = Swift_SmtpTransport::newInstance('localhost', 25);
+                $body = "<html><body><p>".$_SESSION['AUCTION_INFO']->getWinnerUserName()." has won your auction! Please email the winner at ".$winner_email." to determine how to get the textbook that they won into their hands.</p></body></html>";
+                $mailer = Swift_Mailer::newInstance($transport);
+                $message = Swift_Message::newInstance('Your textbook, '. $_SESSION["AUCTION_TEXTBOOK"]["Text_Name"] .', has been sold!')
+                    ->setFrom(array('kurtreed1346@gmail.com'=>'BookSmart Administrator'))
+                    ->setTo(array($seller_email => $_SESSION["AUCTION_INFO"]->getSellerUserName()))
+                    ->setBody($body, 'text/html');
+
+                $result = $mailer->send($message);
+                
+                $transport = Swift_SmtpTransport::newInstance('localhost', 25);
+                $body = "<html><body><p>You've won an auction! Please email the auctioneer at ".$seller_email." to determine how to get the textbook that you won into your hands.</p></body></html>";
+                $mailer = Swift_Mailer::newInstance($transport);
+                $message = Swift_Message::newInstance('You\'ve won the textbook you\'ve bid on, '. $_SESSION["AUCTION_TEXTBOOK"]["Text_Name"])
+                    ->setFrom(array('kurtreed1346@gmail.com'=>'BookSmart Administrator'))
+                    ->setTo(array($winner_email => $_SESSION["AUCTION_INFO"]->getWinnerUserName()))
+                    ->setBody($body, 'text/html');
+
+                $result = $mailer->send($message);
+            }
+                   
             mysqli_close($link);
-//            header("Location: auctionInfo.php?auction_id={$_SESSION['AUCTION_INFO']->getAuctionId()}");
+            header("Location: auctionInfo.php?auction_id={$_SESSION['AUCTION_INFO']->getAuctionId()}");
         }
         
     }
