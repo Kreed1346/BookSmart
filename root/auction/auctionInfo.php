@@ -135,7 +135,7 @@
     }
 ?>
         <section class="info">
-            <a class="return" href="../auction/auctionSearch.php">&#10094; Return to Auction Search Page</a>
+            <a class="return" href="../auction/auctionSearch.php">&lsaquo; Return to Auction Search Page</a>
             <h1>
                 <?php
                     echo "Auction #" . $_SESSION['AUCTION_INFO']->getAuctionId() . " - " . $_SESSION["AUCTION_INFO"]->getAuctionTitle();

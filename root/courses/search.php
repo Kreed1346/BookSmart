@@ -4,13 +4,15 @@
     require($INC_DIR . "top-navbar.php");
     require 'courseSearch.php';
 ?>
+<!--
         <section class="left-aligned">
-            <br/>
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
+            
         </section>
+-->
 
         <section class="search-form">
-            
+            <br/>
+            <a class="return" href="../profile/profile.php">&lsaquo; Return to Profile Page</a>
             <h1>Search for a Course</h1>
             
             <form action="validateSearch.php" method="POST">

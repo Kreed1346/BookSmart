@@ -7,7 +7,7 @@
     <section>
         <section id="auction">
             <br/>
-            <a class="return" href="../auction/auctionLanding.php">&#10094; Return to Auction Landing Page</a>
+            <a class="return" href="../auction/auctionLanding.php">&lsaquo; Return to Auction Landing Page</a>
             <h1>Create an Auction Listing</h1>
             <form action="validateAuctionCreation.php" method="POST">
                 <label for="auctionTitle">Auction Title</label><br/><br/>

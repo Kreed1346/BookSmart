@@ -166,6 +166,13 @@ input {
     background-color: #37734C;
     padding-left: 30px;
     border-radius: 15px;
+    box-shadow: inset 0px -2px 15px #17532C;
+}
+
+.login-btn:hover {
+    color: #ddd;
+    background-color: #3D5946;
+    box-shadow: inset 0px 0px 15px #1D3926;
 }
 
 .login-form {
@@ -638,4 +645,9 @@ input[type="submit"], input[type="reset"], input[type="button"] {
     font-family: 'Rosarivo', serif;
     font-size: 14px;
     color: #FFD57F;
+}
+
+.higher-access {
+    width: 500px;
+    font-family: 'Marcellus SC', serif;
 }

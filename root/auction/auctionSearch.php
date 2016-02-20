@@ -6,7 +6,7 @@
 ?>
         <section class="search-form">
             <br/>
-            <a class="return" href="../auction/auctionLanding.php">&#10094; Return to Auction Landing Page</a>
+            <a class="return" href="../auction/auctionLanding.php">&lsaquo; Return to Auction Landing Page</a>
             <h1>Search for Auctions by Textbook</h1>
 <!--
             <section class="sub-text">

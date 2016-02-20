@@ -77,7 +77,7 @@
     }
 ?>
         <section class="info">
-            <a class="return" href="../courses/search.php">&#10094; Return to Course Search Page</a>
+            <a class="return" href="../courses/search.php">&lsaquo; Return to Course Search Page</a>
             <h1>
                 <?php
                     echo $_SESSION['COURSE_INFO']->getCourseCode() . " - " . $_SESSION["COURSE_INFO"]->getCourseDesc() . "<hr/>";

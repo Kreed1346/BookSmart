@@ -11,7 +11,7 @@
         ?>
         <section id="profile-settings">
             <br/>
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
+            <a class="return" href="../profile/profile.php">&lsaquo; Return to Profile Page</a>
             <h1>Profile Settings</h1>
             <form action="changeSettings.php" method="POST">
                 <label for="displayname">Display Name: </label>

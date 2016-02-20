@@ -7,7 +7,7 @@
     <section>
         <aside class="sidebar profile-sidebar float-left">
             <br/>
-            <a class="return" href="../profile/profile.php">&#10094; Return to Profile Page</a>
+            <a class="return" href="../profile/profile.php">&lsaquo; Return to Profile Page</a>
             <h1 class="less-bottom-margin">Auctions</h1>
             <hr/>
             <h2><a href="../auction/createAuction.php">Start an Auction</a></h2>
