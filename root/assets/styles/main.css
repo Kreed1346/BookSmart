@@ -4,7 +4,7 @@ html {
 }
 
 body section:not(section[id="home"]) {
-    width: 800px;
+    width: 900px;
     margin: 0 auto;
 }
 
@@ -247,8 +247,19 @@ input {
     right: 8px;
 }
 
+.midbar {
+    background-color: #1D3926;
+    margin: 20px auto;
+    padding: 1px 20px;
+    border-radius: 20px;
+/*    width: 900px;*/
+}
+
+.midbar h1 {
+    font-size: 28px;
+}
+
 .sidebar {
-    
     background-color: #1D3926;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -453,7 +464,7 @@ select optgroup option {
 }
 
 #profile-settings {
-    width: 500px;
+    width: 600px;
     background-color: #A17237;
     text-align: center;
     padding: 1px;
@@ -583,7 +594,7 @@ input[type="text"]:focus, input[type="password"]:focus{
 }
 
 input[type="submit"], input[type="reset"], input[type="button"] {
-    width: 150px;
+    width: 180px;
     font-size: 20px;
 }
 
@@ -650,4 +661,35 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 .higher-access {
     width: 500px;
     font-family: 'Marcellus SC', serif;
+}
+
+.db-tools-sidebar {
+    font-family: 'Marcellus SC', serif;
+}
+
+.db-data {
+    background-color: #27633C;
+    margin-bottom: 20px;
+    color: #E7F3FC;
+}
+
+.db-data tr th {
+    text-align: left;
+    padding: 1px 5px;
+    color: #FFFDEB;
+    background-color: #27633C;
+}
+
+.db-data tr td {
+    font-family: 'Rosarivo', serif;
+    padding: 1px 5px;
+}
+
+.db-data tr:nth-child(even) {
+    background-color: #57936C;
+}
+
+
+.db-data tr:nth-child(odd) {
+    background-color: #37734C;
 }

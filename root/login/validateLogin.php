@@ -65,7 +65,15 @@
             
             $_SESSION["isLoggedIn"] = true;
             
-            header("Location: ../profile/profile.php");
+            if ($user->getAdminStatus() || $user->getModStatus()) {
+                if ($user->getAdminStatus()) {
+                    header("Location: ../admin/adminHome.php");
+                } else {
+                    header("Location: ../mod/modHome.php");
+                }
+            } else {
+                header("Location: ../profile/profile.php");
+            }
         } else {
             header("Location: login.php");
         }

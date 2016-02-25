@@ -42,11 +42,11 @@
             exit();
         }
         
-        $username = mysqli_real_escape_string($link, $_POST['username']); //sanitize username input
-        $password = mysqli_real_escape_string($link, $_POST['password']); //sanitize password input
-        $displayname = mysqli_real_escape_string($link, $_POST['displayname']); //sanitize displayname input
-        $email = mysqli_real_escape_string($link, $_POST['email']); //sanitize email input
-        $confirmEmail = mysqli_real_escape_string($link, $_POST['confirm-email']); //sanitize email confirmation input
+        $username = mysqli_real_escape_string($link, filter_var($_POST['username'], FILTER_SANITIZE_STRING)); //sanitize username input
+        $password = mysqli_real_escape_string($link, filter_var($_POST['password'], FILTER_SANITIZE_STRING)); //sanitize password input
+        $displayname = mysqli_real_escape_string($link, filter_var($_POST['displayname'], FILTER_SANITIZE_STRING)); //sanitize displayname input
+        $email = mysqli_real_escape_string($link, filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)); //sanitize email input
+        $confirmEmail = mysqli_real_escape_string($link, filter_var($_POST['confirm-email'], FILTER_SANITIZE_EMAIL)); //sanitize email confirmation input
         $uniqueUser = true;
         $sameEmail = true;
         
