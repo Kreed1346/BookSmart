@@ -47,8 +47,8 @@
                                  <td>'.$user["email"].'</th>
                                  <td>'.(($user["moderator"] > 0) ? "Yes" : "No").'</th>
                                  <td>'.(($user["administrator"] > 0) ? "Yes" : "No").'</th>
-                                 <td><p class="starfruit"><a href="edit/editTextbook.php?code='.$user["id"].'">Edit</a></p></td>
-                                 <td><p class="starfruit"><a href="delete/deleteTextbook.php?code="'.$user["id"].'">Delete</a></p></td>
+                                 <td><p class="starfruit"><a href="edit/editUser.php?code='.$user["id"].'">Edit</a></p></td>
+                                 <td><p class="starfruit"><a href="delete/deleteUser.php?code='.$user["id"].'">Delete</a></p></td>
                              </tr>';
                     }
                     echo '</table>';

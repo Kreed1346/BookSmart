@@ -63,8 +63,6 @@
                 Print '<script>alert("Email fields do not match.");</script>';
                 $sameEmail = false;
                 header("Location: register.php");
-            } else {
-                //all is good!
             }
         }
         
