@@ -4,7 +4,9 @@
     require($INC_DIR . "header.php");
     require($INC_DIR . "top-navbar.php");
     if (!$_SESSION['USER_INFO']->getAdminStatus()) {
-        header("Location: ../../profile/profile.php");
+        if (!$_SESSION['USER_INFO']->getModStatus()) {
+            header("Location: ../profile/profile.php");
+        }
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
