@@ -8,7 +8,6 @@
         }
 		
 		if (!empty($_POST['db-operator'])) {
-			var_dump($_POST['db-operator']);
 			
 			if ($_POST['db-operator'] == "add" || $_POST['db-operator'] == "edit") {
 				$course_code = mysqli_real_escape_string($link, filter_var($_POST['course_code'], FILTER_SANITIZE_STRING)); //sanitize courseID input
@@ -68,14 +67,11 @@
 				
 				if ($_POST['db-operator'] === "add") {
 					$result = mysqli_query($link, "INSERT INTO courses (Course_Code, Course_Desc, Sprint, Section, Credits, Start_Time, End_Time, Days_Taught, Instructor, ISBN_One_v10, ISBN_One_v13, ISBN_Two_v10, ISBN_Two_v13) VALUES ('$course_code', '$course_desc', $sprint, '$section', $credits, TIME(STR_TO_DATE('$start_time','%h:%i:%s %p')), TIME(STR_TO_DATE('$end_time','%h:%i:%s %p')), '$days_of_week_string', '$instructor', '$isbn_1_10', '$isbn_1_13', '$isbn_2_10', '$isbn_2_13')");
-					var_dump($result);
 				} else if ($_POST['db-operator'] == "edit") {
 					$course_id =  mysqli_real_escape_string($link, filter_var($_POST['id'], FILTER_SANITIZE_STRING));
 					$result =mysqli_query($link, "UPDATE courses SET Course_Code='$course_code', Course_Desc='$course_desc', Sprint=$sprint, Section='$section', Credits=$credits, Start_Time=TIME(STR_TO_DATE('$start_time','%h:%i:%s %p')), End_Time=TIME(STR_TO_DATE('$end_time','%h:%i:%s %p')), Days_Taught='$days_of_week_string', Instructor='$instructor', ISBN_One_v10='$isbn_1_10', ISBN_One_v13='$isbn_1_13', ISBN_Two_v10='$isbn_2_10', ISBN_Two_v13='$isbn_2_13' WHERE id=$course_id");
-					var_dump($result);
 				}
 				
-				header("Location: ../courseCatalog.php");
 			} else if ($_POST['db-operator'] == "delete") {
 				$choice = mysqli_real_escape_string($link, filter_var($_POST['choice'], FILTER_SANITIZE_STRING)); //sanitize courseID input
 				if ($choice === "Yes") {
@@ -83,10 +79,9 @@
 					$course_id =  mysqli_real_escape_string($link, filter_var($_POST['code'], FILTER_SANITIZE_STRING));
 					$result = mysqli_query($link, "DELETE FROM courses WHERE id=$course_id");
 				}
-				header("Location: ../courseCatalog.php");
 			}
 		} 
-		
+		header("Location: ../courseCatalog.php");
 		mysqli_close($link);
     }
 ?>

@@ -30,6 +30,7 @@
                 if (!empty($textbooks)) {
                     echo '<table class="db-data">
                              <tr>
+							 	 <th>id</th>
                                  <th>Text Name</th>
                                  <th>Primary Author</th>
                                  <th>Publisher</th>
@@ -42,6 +43,7 @@
                              </tr>';
                     foreach($textbooks as $textbook) {
                         echo '<tr>
+								 <td>'.$textbook["id"].'</th>
                                  <td>'.$textbook["Text_Name"].'</th>
                                  <td>'.$textbook["Primary_Author"].'</th>
                                  <td>'.$textbook["Publisher"].'</th>
@@ -50,7 +52,7 @@
                                  <td>'.$textbook["ISBN_v10"].'</th>
                                  <td>'.$textbook["ISBN_v13"].'</th>
                                  <td><p class="starfruit"><a href="edit/editTextbook.php?code='.$textbook["id"].'">Edit</a></p></td>
-                                 <td><p class="starfruit"><a href="delete/deleteTextbook.php?code="'.$textbook["id"].'">Delete</a></p></td>
+                                 <td><p class="starfruit"><a href="delete/deleteTextbook.php?code='.$textbook["id"].'">Delete</a></p></td>
                              </tr>';
                     }
                     echo '</table>';
