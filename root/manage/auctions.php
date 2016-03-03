@@ -29,9 +29,9 @@
             <br/>
             <a class="return" href="../mod/modHome.php">&lsaquo; Return to Mod Home</a>
             <h1>All Auctions</h1>
+			<h2><a class="create-btn" href="add/newAuction.php">+ Add an Auction</a></h2>
             <?php
                 if (!empty($auctions)) {
-//                    echo "hey it worked";
                     echo '<table class="db-data">
                              <tr>
                                  <th>Id</th>
@@ -46,10 +46,10 @@
                                  <th>End Timestamp</th>
                                  <th>Auction Ended?</th>
                                  <th>Winner Username</th>
+								 <th>Edit</th>
+                                 <th>Delete?</th>
                              </tr>';
                     foreach($auctions as $auction) {
-//                        $start_time = date("h:i A", strtotime($course["Start_Time"]));
-//                        $end_time = date("h:i A", strtotime($course["End_Time"]));
                         echo '<tr>
                                  <td>'.$auction["auction_id"].'</th>
                                  <td>'.$auction["auction_title"].'</th>
@@ -63,6 +63,8 @@
                                  <td>'.$auction["auction_end_time"].'</th>
                                  <td>'.(($auction["auction_ended"] > 0) ? "Yes" : "No").'</th>
                                  <td>'.$auction["winner_username"].'</th>
+								 <td><p class="starfruit"><a href="edit/editAuction.php?code='.$auction["auction_id"].'">Edit</a></p></td>
+                                 <td><p class="starfruit"><a href="delete/deleteAuction.php?code='.$auction["auction_id"].'">Delete</a></p></td>
                              </tr>';
                     }
                     echo '</table>';
