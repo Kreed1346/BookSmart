@@ -4,7 +4,7 @@
     require_once($INC_DIR . "top-navbar.php");
     require_once 'activeAuctions.php';
 ?>
-    <section>
+    <section id="auction-landing">
         <aside class="sidebar profile-sidebar float-left">
             <br/>
             <a class="return" href="../profile/profile.php">&lsaquo; Return to Profile Page</a>

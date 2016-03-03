@@ -6,8 +6,6 @@
     if (!$_SESSION['USER_INFO']->getAdminStatus()) {
         header("Location: ../profile/profile.php");
     }
-?>
-<?php
     $users = [];
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $link = mysqli_connect("localhost", "root", "booksmart", "booksmart");
@@ -22,15 +20,14 @@
         }
     }
 ?>
-
     <section>
         <section class="midbar db-tools-sidebar">
             <br/>
             <a class="return" href="../admin/adminHome.php">&lsaquo; Return to Admin Home</a>
             <h1>User Catalog</h1>
+            <h2><a class="create-btn" href="add/newUser.php">+ Add a User</a></h2>
             <?php
                 if (!empty($users)) {
-//                    echo "hey it worked";
                     echo '<table class="db-data">
                              <tr>
                                  <th>Id</th>
@@ -39,6 +36,8 @@
                                  <th>Email</th>
                                  <th>Moderator</th>
                                  <th>Administrator</th>
+                                 <th>Edit</th>
+                                 <th>Delete?</th>
                              </tr>';
                     foreach($users as $user) {
                         echo '<tr>
@@ -48,13 +47,13 @@
                                  <td>'.$user["email"].'</th>
                                  <td>'.(($user["moderator"] > 0) ? "Yes" : "No").'</th>
                                  <td>'.(($user["administrator"] > 0) ? "Yes" : "No").'</th>
+                                 <td><p class="starfruit"><a href="edit/editTextbook.php?code='.$user["id"].'">Edit</a></p></td>
+                                 <td><p class="starfruit"><a href="delete/deleteTextbook.php?code="'.$user["id"].'">Delete</a></p></td>
                              </tr>';
                     }
                     echo '</table>';
                 }
-            ?>
-            
+            ?>            
         </section>        
     </section>
-
 <?php require($INC_DIR . "footer.php"); ?>

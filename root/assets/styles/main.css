@@ -1,6 +1,6 @@
 html {
     background-color: #3D5946;
-    min-width: 735px;
+    min-width: 1030px;
 }
 
 body section:not(section[id="home"]) {
@@ -345,7 +345,7 @@ input {
 }
 
 .search-form {
-    width: 700px;
+    width: 800px;
     background-color: #A17237;
     text-align: center;
     padding: 1px;
@@ -559,6 +559,10 @@ select optgroup option {
     color: #FFD57F;
 }
 
+#auction-landing {
+    margin: 0 auto;
+}
+
 #auction {
     background-color: #1D3926;
     padding: 10px 20px 20px 20px;
@@ -587,6 +591,10 @@ textarea {
 input[type="text"], input[type="password"] {
     width: 300px;
     padding: 3px 0px;
+}
+
+input[type="time"] {
+    width: 150px;
 }
 
 input[type="text"]:focus, input[type="password"]:focus{
@@ -627,6 +635,10 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 
 .float-left {
     float: left;
+}
+
+.float-right {
+    float: right;
 }
 
 #auction form label {
@@ -689,7 +701,105 @@ input[type="submit"], input[type="reset"], input[type="button"] {
     background-color: #57936C;
 }
 
-
 .db-data tr:nth-child(odd) {
+    background-color: #37734C;
+}
+
+a.create-btn < h2 {
+    margin-bottom: 100px;
+}
+
+.create-btn {
+    background-color: #57936C;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.create-btn:hover {
+    background-color: #27633C;
+    color: #DFDDCB;
+}
+
+.starfruit {
+    background-color: #FFFDEB;
+    text-align: center;
+    color: #27633C;
+    border: none;
+    width: 100px;
+    padding: 2px 0px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.starfruit:hover {
+    cursor: pointer;
+    background-color: #27633C;
+    color: #FFFDEB;
+}
+
+.starfruit a {
+    color: #27633C;
+}
+
+.starfruit a:hover {
+    color: #FFFDEB;
+}
+
+.db-form {
+    background-color: #174326;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.db-form label {
+    color: #FFFDEB;
+}
+
+.day-selection {
+    background-color: #57936C;
+    list-style-type: none;
+    padding: 5px 5px 5px 10px;
+    display: inline;
+    border-radius: 5px;
+}
+
+.day-selection li {
+    text-indent: none;
+    display: inline-block;
+    font-family: 'Rosarivo', serif;
+    padding: 2px 0px;
+    color: #FFFDEB;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.day-selection li input {
+    position: relative;
+    top: 1px;
+    right: 1px;
+}
+
+.book-selection {
+    background-color: #57936C;
+    padding: 5px 5px 5px 10px;
+    margin: 5px 0px 20px 0px;
+    border-radius: 5px;
+}
+
+.db-submit-btn {
+    border: none;
+    color: #FFFDEB;
+    background-color: #57936C;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-top: 5px;
+    font-family: 'Rosarivo', serif;
+    box-shadow: inset 0px -1px 15px rgba(29,57,38,0.3);
+}
+
+.db-submit-btn:hover {
+    cursor: pointer;
     background-color: #37734C;
 }
