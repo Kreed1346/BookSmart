@@ -108,9 +108,30 @@
             
             if (!empty($seller_email) && !empty($winner_email)) {
                 $transport = Swift_SmtpTransport::newInstance('localhost', 25);
-                $body = "<html><body><p>".$_SESSION['AUCTION_INFO']->getWinnerUserName()." has won your auction! Please email the winner at ".$winner_email." to determine how to get the textbook that they won into their hands.</p></body></html>";
+				$body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+						 <html xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+								<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+								<title>Demystifying Email Design</title>
+								<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+							</head>
+							<body style="margin: 0; padding: 20px 0 0 0;" bgcolor="3D5946">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="A17237" style="padding: 20px 20px 20px 20px;">
+									<tr>
+										<td align="center" style="padding: 30px 0 30px 0; font-size: 30px; color: #FFD57F;">
+											Auction Completion
+										</td>
+									</tr>
+									<tr>
+										<td align="center" style="font-size: 24px; color: #FFD57F;">
+											'.$_SESSION['AUCTION_INFO']->getWinnerUserName().' has won your auction! Please email the winner at '.$winner_email.' to determine how to get the textbook that they\'ve won into their hands.
+										</td>
+									</tr>
+								</table>
+							</body>
+						 </html>';
                 $mailer = Swift_Mailer::newInstance($transport);
-                $message = Swift_Message::newInstance('Your textbook, '. $_SESSION["AUCTION_TEXTBOOK"]["Text_Name"] .', has been sold!')
+                $message = Swift_Message::newInstance('Your auctioned textbook, '. $_SESSION["AUCTION_TEXTBOOK"]["Text_Name"] .', has been sold!')
                     ->setFrom(array('kurtreed1346@gmail.com'=>'BookSmart Administrator'))
                     ->setTo(array($seller_email => $_SESSION["AUCTION_INFO"]->getSellerUserName()))
                     ->setBody($body, 'text/html');
@@ -118,7 +139,28 @@
                 $result = $mailer->send($message);
                 
                 $transport = Swift_SmtpTransport::newInstance('localhost', 25);
-                $body = "<html><body><p>You've won an auction! Please email the auctioneer at ".$seller_email." to determine how to get the textbook that you won into your hands.</p></body></html>";
+				$body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+						 <html xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+								<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+								<title>Demystifying Email Design</title>
+								<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+							</head>
+							<body style="margin: 0; padding: 20px 0 0 0;" bgcolor="3D5946">
+								<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="A17237" style="padding: 20px 20px 20px 20px;">
+									<tr>
+										<td align="center" style="padding: 30px 0 30px 0; font-size: 30px; color: #FFD57F;">
+											You\'ve Won an Auction!
+										</td>
+									</tr>
+									<tr>
+										<td align="center" style="font-size: 24px; color: #FFD57F;">
+											Please email the auctioneer at '.$seller_email.' to determine how to get the textbook that you\'ve won into your hands.
+										</td>
+									</tr>
+								</table>
+							</body>
+						 </html>';
                 $mailer = Swift_Mailer::newInstance($transport);
                 $message = Swift_Message::newInstance('You\'ve won the textbook you\'ve bid on, '. $_SESSION["AUCTION_TEXTBOOK"]["Text_Name"])
                     ->setFrom(array('kurtreed1346@gmail.com'=>'BookSmart Administrator'))

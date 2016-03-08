@@ -1,6 +1,6 @@
 html {
     background-color: #3D5946;
-    min-width: 1030px;
+    min-width: 1140px;
 }
 
 body section:not(section[id="home"]) {

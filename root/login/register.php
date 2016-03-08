@@ -104,7 +104,41 @@
             mysqli_query($link, "INSERT INTO temp_users (confirmation_code, username, password, displayname, email) VALUES ('$confirm_code','$username','$hashPass','$displayname','$confirmEmail')");
             
             $transport = Swift_SmtpTransport::newInstance('localhost', 25);
-            $body = "<html><body><p>Thanks for signing up with BookSmart! Please activate your account by clicking through the link located <a href='http://localhost/BookSmart/root/login/registrySuccess.php?conf=$confirm_code'>here</a>.</p></body></html>";
+
+			
+			$body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+					 <html xmlns="http://www.w3.org/1999/xhtml">
+					 	<head>
+							<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+						  	<title>Demystifying Email Design</title>
+						  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+						</head>
+						<body style="margin: 0; padding: 20px 0 0 0;" bgcolor="3D5946">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="A17237" style="padding: 20px 20px 20px 20px;">
+								<tr>
+									<td align="center" style="padding: 30px 0 30px 0; font-size: 30px; color: #FFD57F;">
+										BookSmart Account Confirmation
+									</td>
+								</tr>
+								<tr>
+									<td align="center" style="font-size: 24px; color: #FFD57F;">
+										Thanks for signing up with BookSmart! Please activate your account by clicking through the link located below.
+									</td>
+								</tr>
+								<tr>
+									<td class="btn-container">
+										<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="37734C" style="padding: 20px 20px 20px 20px;">
+											<tr>
+												<td align="center">
+													<a style="text-decoration: none; font-size: 24px; color: #FFFDEB;" href="http://localhost/BookSmart/root/login/registrySuccess.php?conf='.$confirm_code.'">Activate Account</a>
+												</td>
+											</tr>											
+										</table>
+									</td>
+								</tr>
+							</table>
+						</body>
+					 </html>';
             $mailer = Swift_Mailer::newInstance($transport);
             $message = Swift_Message::newInstance('BookSmart Registration Confirmation')
                 ->setFrom(array('kurtreed1346@gmail.com'=>'BookSmart Administrator'))
