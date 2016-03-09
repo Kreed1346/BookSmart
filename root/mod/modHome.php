@@ -15,7 +15,6 @@
             <a class="return" href="../profile/profile.php">&lsaquo; Return to Profile Page</a>
             <h1>Moderator Home Page</h1>
             <h2><a href="../manage/auctions.php">Manage Auctions</a></h2>
-            <h2><a href="../manage/flags.php">Manage Flags (Coming Soon)</a></h2>
         </aside>        
     </section>
 <?php require($INC_DIR . "footer.php"); ?>

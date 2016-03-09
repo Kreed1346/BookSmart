@@ -34,7 +34,7 @@
 			$auction['isbn'] = 'ISBN-13:'.$auction['isbn'];
 			$textbook_query_string = "SELECT * FROM textbooks WHERE ISBN_v13='".$auction['isbn']."'";
 		}
-		var_dump($auction['isbn']);
+//		var_dump($auction['isbn']);
 		
 		$chosen_book_query = mysqli_query($link, $textbook_query_string);
 		$chosen_book = mysqli_fetch_array($chosen_book_query);

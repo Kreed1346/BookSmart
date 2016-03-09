@@ -26,7 +26,7 @@
                 mysqli_query($link, "DELETE FROM temp_users WHERE confirmation_code='$confirm_code'");
                 session_write_close();
             } else {
-                echo "<section><p>Confirmation unsuccessful. (Are you using the correct email link that was provided?)</p></section>";
+                echo "<section id='confirmed'><p>Confirmation unsuccessful. (Are you using the correct email link that was provided?)</p></section>";
             }
         } 
     }
